@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"               
+             xmlns:controls="clr-namespace:BoardFormat.MVVM.Views"       
+             xmlns:local="clr-namespace:BoardFormat"
+             xmlns:mauiapp="clr-namespace:BoardFormat.MVVM.ViewsModels"             
+             x:Class="BoardFormat.MainPage">
+
+    <ContentPage.Resources>
+        <local:ObservableToListConverter x:Key="observableToListConverter" />
+    </ContentPage.Resources>
+
+    
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+    
+            <controls:PieceCollectionView 
+                x:Name="pieceCollection"
+                ItemsSource="{Binding Pieces}"
+                PiceLength ="{Binding Length}"
+                PiceWidth ="{Binding Width}"
+                PiceStructure="{Binding Structure, Mode=TwoWay}"
+                />
+
+            <Button Text="{ Binding Structure }" Command="{Binding OnAddPieceClicked}" />
+            <Button Text="Optimize" Command="{Binding OnOptimizeClicked}" />
+
+            <Button Text="Load library" Clicked="OnLibraryClicked" />
+
+            <controls:CutterDrawerView
+                x:Name="CutterDrawerView"
+                LeftRightMargin="10"
+                TopMargin="10"
+                BetweenBoardMargin="10"
+                />
+            
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

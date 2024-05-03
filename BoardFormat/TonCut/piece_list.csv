@@ -1,0 +1,19 @@
+piece id;material id;length;width;quantity;structure
+2;1;100;50;1;none,byLength,byWidth
+3;1;199;340;4;none,byLength,byWidth
+4;1;190;130;480;none,byLength,byWidth
+5;1;191;131;480;none,byLength,byWidth
+6;1;192;132;480;none,byLength,byWidth
+7;1;193;133;480;none,byLength,byWidth
+8;1;194;134;480;none,byLength,byWidth
+9;1;195;135;480;none,byLength,byWidth
+10;1;196;136;480;none,byLength,byWidth
+11;1;197;137;480;none,byLength,byWidth
+12;1;198;138;480;none,byLength,byWidth
+13;1;199;139;480;none,byLength,byWidth
+14;1;200;140;480;none,byLength,byWidth
+15;1;201;141;480;none,byLength,byWidth
+16;1;202;142;480;none,byLength,byWidth
+17;1;203;143;480;none,byLength,byWidth
+18;1;204;144;480;none,byLength,byWidth
+19;1;205;145;480;none,byLength,byWidth

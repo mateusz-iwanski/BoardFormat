@@ -1,0 +1,751 @@
+{
+  "defaultUnits": {
+	"time": "s",
+	"percent": "%",
+	"length": "mm",
+	"field": "sqmm",
+	"angle": "rad"
+  },
+  "devices": [
+	{
+	  "title": "Device 1D",
+	  "driver": null,
+	  "materialKind": "1d",
+	  "slants": {
+		"supported": true,
+		"leftMeasurement": "fromMiddleToRight",
+		"rightMeasurement": "fromMiddleToLeft"
+	  },
+	  "canCrossCuts": false,
+	  "fullCutsOnly": true,
+	  "stripCuts": true,
+	  "minCutWidth": 0,
+	  "edgingCuts": "optimal",
+	  "originEdgingCuts": "default",
+	  "maxCutDepth": {
+		"enabled": false,
+		"limit": 100,
+		"includeEdging": false
+	  },
+	  "firstCutDirection": "any",
+	  "maxCutLengthByLength": {
+		"enabled": false,
+		"limit": 10000
+	  },
+	  "maxCutLengthByWidth": {
+		"enabled": false,
+		"limit": 10000
+	  },
+	  "id": 1
+	},
+	{
+	  "title": "Device 2D",
+	  "driver": null,
+	  "materialKind": "2d",
+	  "slants": {
+		"supported": true,
+		"leftMeasurement": "fromMiddleToRight",
+		"rightMeasurement": "fromMiddleToLeft"
+	  },
+	  "canCrossCuts": false,
+	  "fullCutsOnly": true,
+	  "stripCuts": false,
+	  "minCutWidth": 0,
+	  "edgingCuts": "optimal",
+	  "originEdgingCuts": "default",
+	  "maxCutDepth": {
+		"enabled": false,
+		"limit": 100,
+		"includeEdging": false
+	  },
+	  "firstCutDirection": "any",
+	  "maxCutLengthByLength": {
+		"enabled": false,
+		"limit": 10000
+	  },
+	  "maxCutLengthByWidth": {
+		"enabled": false,
+		"limit": 10000
+	  },
+	  "id": 2
+	}
+  ],
+  "pieces": [
+	{
+	  "materialId": 2,
+	  "identifier": "1500100903",
+	  "length": 923,
+	  "width": 688,
+	  "shapeType": "none",
+	  "quantity": 1,
+	  "structure": ["byLength", "byWidth", "none"], 
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": "1",
+		"rightVeneerId": "1",
+		"topVeneerId": null,
+		"bottomVeneerId": "1"
+	  },
+	  "id": 1
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1220,
+	  "width": 740,
+	  "shapeType": "none",
+	  "quantity": 1,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 2
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1480,
+	  "width": 690,
+	  "shapeType": "none",
+	  "quantity": 4,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 3
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1480,
+	  "width": 740,
+	  "shapeType": "none",
+	  "quantity": 2,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 4
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1480,
+	  "width": 750,
+	  "shapeType": "none",
+	  "quantity": 2,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 5
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "1500100902",
+	  "length": 880,
+	  "width": 950,
+	  "shapeType": "none",
+	  "quantity": 2,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": "1",
+		"rightVeneerId": "1",
+		"topVeneerId": "1",
+		"bottomVeneerId": null
+	  },
+	  "id": 6
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1246,
+	  "width": 528,
+	  "shapeType": "none",
+	  "quantity": 1,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 7
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "1500100900",
+	  "length": 668,
+	  "width": 676,
+	  "shapeType": "none",
+	  "quantity": 1,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": 1,
+		"rightVeneerId": 1,
+		"topVeneerId": 1,
+		"bottomVeneerId": 1
+	  },
+	  "id": 8
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1246,
+	  "width": 676,
+	  "shapeType": "none",
+	  "quantity": 1,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 9
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1246,
+	  "width": 966,
+	  "shapeType": "none",
+	  "quantity": 1,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 10
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1246,
+	  "width": 1203,
+	  "shapeType": "none",
+	  "quantity": 1,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 11
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1202,
+	  "width": 826,
+	  "shapeType": "none",
+	  "quantity": 1,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 12
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1096,
+	  "width": 419,
+	  "shapeType": "none",
+	  "quantity": 1,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 13
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1205,
+	  "width": 797,
+	  "shapeType": "none",
+	  "quantity": 1,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 14
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1190,
+	  "width": 384,
+	  "shapeType": "none",
+	  "quantity": 1,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 15
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1190,
+	  "width": 674,
+	  "shapeType": "none",
+	  "quantity": 1,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 16
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "1500100904",
+	  "length": 940,
+	  "width": 433,
+	  "shapeType": "none",
+	  "quantity": 2,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": 1,
+		"bottomVeneerId": 1
+	  },
+	  "id": 17
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "1500100906",
+	  "length": 982,
+	  "width": 1032,
+	  "shapeType": "none",
+	  "quantity": 1,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": 1,
+		"topVeneerId": null,
+		"bottomVeneerId": 1
+	  },
+	  "id": 18
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1140,
+	  "width": 2260,
+	  "shapeType": "none",
+	  "quantity": 8,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 19
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1020,
+	  "width": 840,
+	  "shapeType": "none",
+	  "quantity": 2,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 20
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1020,
+	  "width": 500,
+	  "shapeType": "none",
+	  "quantity": 2,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 21
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "1500100901",
+	  "length": 672,
+	  "width": 592,
+	  "shapeType": "none",
+	  "quantity": 2,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": 1,
+		"rightVeneerId": null,
+		"topVeneerId": 1,
+		"bottomVeneerId": 1
+	  },
+	  "id": 22
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 966,
+	  "width": 592,
+	  "shapeType": "none",
+	  "quantity": 2,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": 1,
+		"rightVeneerId": 1,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 23
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1635,
+	  "width": 823,
+	  "shapeType": "none",
+	  "quantity": 2,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 24
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1670,
+	  "width": 830,
+	  "shapeType": "none",
+	  "quantity": 2,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 25
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1660,
+	  "width": 823,
+	  "shapeType": "none",
+	  "quantity": 2,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 26
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1255,
+	  "width": 1195,
+	  "shapeType": "none",
+	  "quantity": 2,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 27
+	},
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "length": 1255,
+	  "width": 548,
+	  "shapeType": "none",
+	  "quantity": 8,
+	  "structure": ["byLength", "byWidth", "none"],
+	  "priority": "normal",
+	  "description": "",
+	  "surplus": 0,
+	  "margin": 0,
+	  "slantLeft": 0,
+	  "slantRight": 0,
+	  "veneers": {
+		"leftVeneerId": null,
+		"rightVeneerId": null,
+		"topVeneerId": null,
+		"bottomVeneerId": null
+	  },
+	  "id": 28
+	}
+  ],
+  "materials": [
+	{
+	  "deviceId": 2,
+	  "title": "Material 2D",
+	  "kind": "2d",
+	  "width": 0,
+	  "thickness": 18,
+	  "canHaveStructure": true,
+	  "canRotate": true,
+	  "canMirror": true,
+	  "surplus": 0,
+	  "surplusEditable": true,
+	  "margin": 0,
+	  "marginEditable": true,
+	  "defaultEdging": 0,
+	  "cuttingDimensions": "net",
+	  "canBeVeneered": true,
+	  "grindable": false,
+	  "kerf": 3,
+	  "allowEdgeCuts": true,
+	  "reuseWaste": {
+		"minShorterLength": 200,
+		"minLongerLength": 200,
+		"edging": {
+		  "enabled": false,
+		  "default": 0
+		}
+	  },
+	  "standardStockItems": [],
+	  "id": 2
+	}
+  ],
+  "stock": [
+	{
+	  "materialId": 2,
+	  "identifier": "",
+	  "description": "",
+	  "priority": "normal",
+	  "length": 2245,
+	  "width": 3210,
+	  "quantity": 16,
+	  "structure": "none",
+	  "edging": {
+		"left": 0,
+		"right": 0,
+		"top": 0,
+		"bottom": 0
+	  },
+	  "id": 1
+	}
+  ],
+  "veneers": [
+	{
+	  "title": "Oak",
+	  "width": 22,
+	  "thickness": 1.5,
+	  "maxMaterialThickness": 18,
+	  "id": 1
+	}
+  ]
+}

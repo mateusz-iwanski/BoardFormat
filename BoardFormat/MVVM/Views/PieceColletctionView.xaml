@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BoardFormat.MVVM.Views.PieceCollectionView"
+             x:Name="view" >
+    <VerticalStackLayout>
+        
+        <StackLayout>
+
+            <ActivityIndicator  IsEnabled="True" IsRunning="True" IsVisible="True" />
+            
+            <ListView ItemsSource="{Binding ItemsSource, Source={x:Reference view}}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            
+                            <Grid Padding="20" ColumnSpacing="20" RowSpacing="20" HorizontalOptions="CenterAndExpand" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Text="{Binding Length}"
+                                    />
+                                <Label Grid.Column="1"
+                                    Text="{Binding Width}"
+                                    />
+                                <Label Grid.Column="2"
+                                       Text="{Binding Structure}"
+                                       />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+            
+            
+            <Entry Placeholder="Enter Length" x:Name="LengthEntry" Text="{Binding PiceLength, Source={x:Reference view}}"/>
+            <Entry Placeholder="Enter Width" x:Name="WidthEntry" Text="{Binding PiceWidth, Source={x:Reference view}}"/>
+            <Switch x:Name="StructureSwitch" IsToggled="{Binding PiceStructure, Source={x:Reference view}}" ></Switch>
+
+        </StackLayout>
+        
+    </VerticalStackLayout>
+</ContentView>

@@ -1,0 +1,859 @@
+{
+	"version": 2,
+	"defaultUnits": {
+		"time": "s",
+		"percent": "%",
+		"length": "mm",
+		"field": "sqmm",
+		"angle": "rad"
+	},
+	"profiles": [
+		{
+			"name": "fromSmall",
+			"active": true,
+			"algorithms": {
+				"grouping": true,
+				"deduction": true,
+				"lastStockItem": true,
+				"firstHit": true,
+				"fast": false,
+				"balance": false,
+				"forking": {
+					"enabled": false,
+					"level": 1
+				},
+				"adaptive": {
+					"enabled": true,
+					"level": 5
+				},
+				"ai": {
+					"enabled": false,
+					"level": 0
+				}
+			},
+			"limits": {
+				"maxCombinations": {
+					"enabled": false,
+					"limit": 5000000
+				},
+				"maxTimeSingle": {
+					"enabled": false,
+					"limit": "5s"
+				},
+				"maxTime": {
+					"enabled": false,
+					"limit": "0s"
+				},
+				"goodEnoughWaste": {
+					"enabled": false,
+					"limit": "0.00%"
+				}
+			},
+			"stockOrder": {
+				"order": {
+					"direction": "fromSmall",
+					"switchToSmall": {
+						"enabled": false,
+						"minWaste": "0.20%"
+					},
+					"randomOrders": {
+						"enabled": false,
+						"count": 5
+					},
+					"randomDrawCount": 10
+				},
+				"adaptiveOrder": {
+					"enabled": true,
+					"minWaste": "0.15%",
+					"maxTries": 3,
+					"maxCycles": 1
+				}
+			},
+			"advanced": {
+				"dynamicMethodSwitch": {
+					"enabled": true,
+					"threshold": "1s"
+				},
+				"fastMethodForLastStockItems": {
+					"enabled": true,
+					"threshold": "0.80%"
+				},
+				"searchDirection": "auto",
+				"searchPrecision": {
+					"firstLevel": 2147483647,
+					"nextLevels": 1
+				}
+			}
+		},
+		{
+			"name": "fromBig",
+			"active": true,
+			"algorithms": {
+				"grouping": true,
+				"deduction": true,
+				"lastStockItem": true,
+				"firstHit": true,
+				"fast": false,
+				"balance": false,
+				"forking": {
+					"enabled": false,
+					"level": 1
+				},
+				"adaptive": {
+					"enabled": true,
+					"level": 5
+				},
+				"ai": {
+					"enabled": false,
+					"level": 0
+				}
+			},
+			"limits": {
+				"maxCombinations": {
+					"enabled": false,
+					"limit": 5000000
+				},
+				"maxTimeSingle": {
+					"enabled": false,
+					"limit": "5s"
+				},
+				"maxTime": {
+					"enabled": false,
+					"limit": "0s"
+				},
+				"goodEnoughWaste": {
+					"enabled": false,
+					"limit": "0.00%"
+				}
+			},
+			"stockOrder": {
+				"order": {
+					"direction": "fromLarge",
+					"switchToSmall": {
+						"enabled": false,
+						"minWaste": "0.20%"
+					},
+					"randomOrders": {
+						"enabled": false,
+						"count": 5
+					},
+					"randomDrawCount": 10
+				},
+				"adaptiveOrder": {
+					"enabled": true,
+					"minWaste": "0.15%",
+					"maxTries": 3,
+					"maxCycles": 1
+				}
+			},
+			"advanced": {
+				"dynamicMethodSwitch": {
+					"enabled": true,
+					"threshold": "1s"
+				},
+				"fastMethodForLastStockItems": {
+					"enabled": true,
+					"threshold": "0.80%"
+				},
+				"searchDirection": "auto",
+				"searchPrecision": {
+					"firstLevel": 2147483647,
+					"nextLevels": 1
+				}
+			}
+		},
+		{
+			"name": "equalFromSmall",
+			"active": true,
+			"algorithms": {
+				"grouping": true,
+				"deduction": true,
+				"lastStockItem": true,
+				"firstHit": true,
+				"fast": false,
+				"balance": true,
+				"forking": {
+					"enabled": false,
+					"level": 1
+				},
+				"adaptive": {
+					"enabled": true,
+					"level": 5
+				},
+				"ai": {
+					"enabled": false,
+					"level": 0
+				}
+			},
+			"limits": {
+				"maxCombinations": {
+					"enabled": false,
+					"limit": 5000000
+				},
+				"maxTimeSingle": {
+					"enabled": false,
+					"limit": "5s"
+				},
+				"maxTime": {
+					"enabled": false,
+					"limit": "0s"
+				},
+				"goodEnoughWaste": {
+					"enabled": false,
+					"limit": "0.00%"
+				}
+			},
+			"stockOrder": {
+				"order": {
+					"direction": "fromSmall",
+					"switchToSmall": {
+						"enabled": false,
+						"minWaste": "0.20%"
+					},
+					"randomOrders": {
+						"enabled": false,
+						"count": 5
+					},
+					"randomDrawCount": 10
+				},
+				"adaptiveOrder": {
+					"enabled": true,
+					"minWaste": "0.15%",
+					"maxTries": 3,
+					"maxCycles": 1
+				}
+			},
+			"advanced": {
+				"dynamicMethodSwitch": {
+					"enabled": true,
+					"threshold": "1s"
+				},
+				"fastMethodForLastStockItems": {
+					"enabled": true,
+					"threshold": "0.80%"
+				},
+				"searchDirection": "auto",
+				"searchPrecision": {
+					"firstLevel": 2147483647,
+					"nextLevels": 1
+				}
+			}
+		},
+		{
+			"name": "equalFromBig",
+			"active": true,
+			"algorithms": {
+				"grouping": true,
+				"deduction": true,
+				"lastStockItem": true,
+				"firstHit": true,
+				"fast": false,
+				"balance": true,
+				"forking": {
+					"enabled": false,
+					"level": 1
+				},
+				"adaptive": {
+					"enabled": true,
+					"level": 5
+				},
+				"ai": {
+					"enabled": false,
+					"level": 0
+				}
+			},
+			"limits": {
+				"maxCombinations": {
+					"enabled": false,
+					"limit": 5000000
+				},
+				"maxTimeSingle": {
+					"enabled": false,
+					"limit": "5s"
+				},
+				"maxTime": {
+					"enabled": false,
+					"limit": "0s"
+				},
+				"goodEnoughWaste": {
+					"enabled": false,
+					"limit": "0.00%"
+				}
+			},
+			"stockOrder": {
+				"order": {
+					"direction": "fromLarge",
+					"switchToSmall": {
+						"enabled": false,
+						"minWaste": "0.20%"
+					},
+					"randomOrders": {
+						"enabled": false,
+						"count": 5
+					},
+					"randomDrawCount": 10
+				},
+				"adaptiveOrder": {
+					"enabled": true,
+					"minWaste": "0.15%",
+					"maxTries": 3,
+					"maxCycles": 1
+				}
+			},
+			"advanced": {
+				"dynamicMethodSwitch": {
+					"enabled": true,
+					"threshold": "1s"
+				},
+				"fastMethodForLastStockItems": {
+					"enabled": true,
+					"threshold": "0.80%"
+				},
+				"searchDirection": "auto",
+				"searchPrecision": {
+					"firstLevel": 2147483647,
+					"nextLevels": 1
+				}
+			}
+		},
+		{
+			"name": "fastFromSmall",
+			"active": true,
+			"algorithms": {
+				"grouping": true,
+				"deduction": true,
+				"lastStockItem": true,
+				"firstHit": true,
+				"fast": true,
+				"balance": false,
+				"forking": {
+					"enabled": false,
+					"level": 1
+				},
+				"adaptive": {
+					"enabled": true,
+					"level": 5
+				},
+				"ai": {
+					"enabled": false,
+					"level": 0
+				}
+			},
+			"limits": {
+				"maxCombinations": {
+					"enabled": false,
+					"limit": 5000000
+				},
+				"maxTimeSingle": {
+					"enabled": false,
+					"limit": "5s"
+				},
+				"maxTime": {
+					"enabled": false,
+					"limit": "0s"
+				},
+				"goodEnoughWaste": {
+					"enabled": false,
+					"limit": "0.00%"
+				}
+			},
+			"stockOrder": {
+				"order": {
+					"direction": "fromSmall",
+					"switchToSmall": {
+						"enabled": false,
+						"minWaste": "0.20%"
+					},
+					"randomOrders": {
+						"enabled": false,
+						"count": 5
+					},
+					"randomDrawCount": 10
+				},
+				"adaptiveOrder": {
+					"enabled": true,
+					"minWaste": "0.15%",
+					"maxTries": 3,
+					"maxCycles": 1
+				}
+			},
+			"advanced": {
+				"dynamicMethodSwitch": {
+					"enabled": true,
+					"threshold": "1s"
+				},
+				"fastMethodForLastStockItems": {
+					"enabled": true,
+					"threshold": "0.80%"
+				},
+				"searchDirection": "auto",
+				"searchPrecision": {
+					"firstLevel": 2147483647,
+					"nextLevels": 1
+				}
+			}
+		},
+		{
+			"name": "fastFromBig",
+			"active": true,
+			"algorithms": {
+				"grouping": true,
+				"deduction": true,
+				"lastStockItem": true,
+				"firstHit": true,
+				"fast": true,
+				"balance": false,
+				"forking": {
+					"enabled": false,
+					"level": 1
+				},
+				"adaptive": {
+					"enabled": true,
+					"level": 5
+				},
+				"ai": {
+					"enabled": false,
+					"level": 0
+				}
+			},
+			"limits": {
+				"maxCombinations": {
+					"enabled": false,
+					"limit": 5000000
+				},
+				"maxTimeSingle": {
+					"enabled": false,
+					"limit": "5s"
+				},
+				"maxTime": {
+					"enabled": false,
+					"limit": "0s"
+				},
+				"goodEnoughWaste": {
+					"enabled": false,
+					"limit": "0.00%"
+				}
+			},
+			"stockOrder": {
+				"order": {
+					"direction": "fromLarge",
+					"switchToSmall": {
+						"enabled": false,
+						"minWaste": "0.20%"
+					},
+					"randomOrders": {
+						"enabled": false,
+						"count": 5
+					},
+					"randomDrawCount": 10
+				},
+				"adaptiveOrder": {
+					"enabled": true,
+					"minWaste": "0.15%",
+					"maxTries": 3,
+					"maxCycles": 1
+				}
+			},
+			"advanced": {
+				"dynamicMethodSwitch": {
+					"enabled": true,
+					"threshold": "1s"
+				},
+				"fastMethodForLastStockItems": {
+					"enabled": true,
+					"threshold": "0.80%"
+				},
+				"searchDirection": "auto",
+				"searchPrecision": {
+					"firstLevel": 2147483647,
+					"nextLevels": 1
+				}
+			}
+		},
+		{
+			"name": "slowFromSmall",
+			"active": false,
+			"algorithms": {
+				"grouping": false,
+				"deduction": false,
+				"lastStockItem": false,
+				"firstHit": false,
+				"fast": false,
+				"balance": false,
+				"forking": {
+					"enabled": false,
+					"level": 1
+				},
+				"adaptive": {
+					"enabled": true,
+					"level": 5
+				},
+				"ai": {
+					"enabled": false,
+					"level": 0
+				}
+			},
+			"limits": {
+				"maxCombinations": {
+					"enabled": false,
+					"limit": 5000000
+				},
+				"maxTimeSingle": {
+					"enabled": true,
+					"limit": "60s"
+				},
+				"maxTime": {
+					"enabled": false,
+					"limit": "0s"
+				},
+				"goodEnoughWaste": {
+					"enabled": false,
+					"limit": "0.00%"
+				}
+			},
+			"stockOrder": {
+				"order": {
+					"direction": "fromSmall",
+					"switchToSmall": {
+						"enabled": false,
+						"minWaste": "0.20%"
+					},
+					"randomOrders": {
+						"enabled": false,
+						"count": 5
+					},
+					"randomDrawCount": 10
+				},
+				"adaptiveOrder": {
+					"enabled": true,
+					"minWaste": "0.15%",
+					"maxTries": 3,
+					"maxCycles": 1
+				}
+			},
+			"advanced": {
+				"dynamicMethodSwitch": {
+					"enabled": true,
+					"threshold": "1s"
+				},
+				"fastMethodForLastStockItems": {
+					"enabled": true,
+					"threshold": "0.80%"
+				},
+				"searchDirection": "auto",
+				"searchPrecision": {
+					"firstLevel": 2147483647,
+					"nextLevels": 1
+				}
+			}
+		},
+		{
+			"name": "slowFromBig",
+			"active": false,
+			"algorithms": {
+				"grouping": false,
+				"deduction": false,
+				"lastStockItem": false,
+				"firstHit": false,
+				"fast": false,
+				"balance": false,
+				"forking": {
+					"enabled": false,
+					"level": 1
+				},
+				"adaptive": {
+					"enabled": true,
+					"level": 5
+				},
+				"ai": {
+					"enabled": false,
+					"level": 0
+				}
+			},
+			"limits": {
+				"maxCombinations": {
+					"enabled": false,
+					"limit": 5000000
+				},
+				"maxTimeSingle": {
+					"enabled": true,
+					"limit": "60s"
+				},
+				"maxTime": {
+					"enabled": false,
+					"limit": "0s"
+				},
+				"goodEnoughWaste": {
+					"enabled": false,
+					"limit": "0.00%"
+				}
+			},
+			"stockOrder": {
+				"order": {
+					"direction": "fromLarge",
+					"switchToSmall": {
+						"enabled": false,
+						"minWaste": "0.20%"
+					},
+					"randomOrders": {
+						"enabled": false,
+						"count": 5
+					},
+					"randomDrawCount": 10
+				},
+				"adaptiveOrder": {
+					"enabled": true,
+					"minWaste": "0.15%",
+					"maxTries": 3,
+					"maxCycles": 1
+				}
+			},
+			"advanced": {
+				"dynamicMethodSwitch": {
+					"enabled": true,
+					"threshold": "1s"
+				},
+				"fastMethodForLastStockItems": {
+					"enabled": true,
+					"threshold": "0.80%"
+				},
+				"searchDirection": "auto",
+				"searchPrecision": {
+					"firstLevel": 2147483647,
+					"nextLevels": 1
+				}
+			}
+		},
+		{
+			"name": "slowEqualFromSmall",
+			"active": false,
+			"algorithms": {
+				"grouping": false,
+				"deduction": false,
+				"lastStockItem": false,
+				"firstHit": false,
+				"fast": false,
+				"balance": true,
+				"forking": {
+					"enabled": false,
+					"level": 1
+				},
+				"adaptive": {
+					"enabled": true,
+					"level": 5
+				},
+				"ai": {
+					"enabled": false,
+					"level": 0
+				}
+			},
+			"limits": {
+				"maxCombinations": {
+					"enabled": false,
+					"limit": 5000000
+				},
+				"maxTimeSingle": {
+					"enabled": true,
+					"limit": "60s"
+				},
+				"maxTime": {
+					"enabled": false,
+					"limit": "0s"
+				},
+				"goodEnoughWaste": {
+					"enabled": false,
+					"limit": "0.00%"
+				}
+			},
+			"stockOrder": {
+				"order": {
+					"direction": "fromSmall",
+					"switchToSmall": {
+						"enabled": false,
+						"minWaste": "0.20%"
+					},
+					"randomOrders": {
+						"enabled": false,
+						"count": 5
+					},
+					"randomDrawCount": 10
+				},
+				"adaptiveOrder": {
+					"enabled": true,
+					"minWaste": "0.15%",
+					"maxTries": 3,
+					"maxCycles": 1
+				}
+			},
+			"advanced": {
+				"dynamicMethodSwitch": {
+					"enabled": true,
+					"threshold": "1s"
+				},
+				"fastMethodForLastStockItems": {
+					"enabled": true,
+					"threshold": "0.80%"
+				},
+				"searchDirection": "auto",
+				"searchPrecision": {
+					"firstLevel": 2147483647,
+					"nextLevels": 1
+				}
+			}
+		},
+		{
+			"name": "slowEqualFromBig",
+			"active": false,
+			"algorithms": {
+				"grouping": false,
+				"deduction": false,
+				"lastStockItem": false,
+				"firstHit": false,
+				"fast": false,
+				"balance": true,
+				"forking": {
+					"enabled": false,
+					"level": 1
+				},
+				"adaptive": {
+					"enabled": true,
+					"level": 5
+				},
+				"ai": {
+					"enabled": false,
+					"level": 0
+				}
+			},
+			"limits": {
+				"maxCombinations": {
+					"enabled": false,
+					"limit": 5000000
+				},
+				"maxTimeSingle": {
+					"enabled": true,
+					"limit": "60s"
+				},
+				"maxTime": {
+					"enabled": false,
+					"limit": "0s"
+				},
+				"goodEnoughWaste": {
+					"enabled": false,
+					"limit": "0.00%"
+				}
+			},
+			"stockOrder": {
+				"order": {
+					"direction": "fromLarge",
+					"switchToSmall": {
+						"enabled": false,
+						"minWaste": "0.20%"
+					},
+					"randomOrders": {
+						"enabled": false,
+						"count": 5
+					},
+					"randomDrawCount": 10
+				},
+				"adaptiveOrder": {
+					"enabled": true,
+					"minWaste": "0.15%",
+					"maxTries": 3,
+					"maxCycles": 1
+				}
+			},
+			"advanced": {
+				"dynamicMethodSwitch": {
+					"enabled": true,
+					"threshold": "1s"
+				},
+				"fastMethodForLastStockItems": {
+					"enabled": true,
+					"threshold": "0.80%"
+				},
+				"searchDirection": "auto",
+				"searchPrecision": {
+					"firstLevel": 2147483647,
+					"nextLevels": 1
+				}
+			}
+		},
+		{
+			"name": "ai",
+			"active": false,
+			"algorithms": {
+				"grouping": false,
+				"deduction": false,
+				"lastStockItem": false,
+				"firstHit": false,
+				"fast": false,
+				"balance": false,
+				"forking": {
+					"enabled": false,
+					"level": 1
+				},
+				"adaptive": {
+					"enabled": true,
+					"level": 5
+				},
+				"ai": {
+					"enabled": true,
+					"level": 0
+				}
+			},
+			"limits": {
+				"maxCombinations": {
+					"enabled": false,
+					"limit": 5000000
+				},
+				"maxTimeSingle": {
+					"enabled": false,
+					"limit": "5s"
+				},
+				"maxTime": {
+					"enabled": false,
+					"limit": "0s"
+				},
+				"goodEnoughWaste": {
+					"enabled": false,
+					"limit": "0.00%"
+				}
+			},
+			"stockOrder": {
+				"order": {
+					"direction": "random",
+					"switchToSmall": {
+						"enabled": false,
+						"minWaste": "0.20%"
+					},
+					"randomOrders": {
+						"enabled": false,
+						"count": 5
+					},
+					"randomDrawCount": 10
+				},
+				"adaptiveOrder": {
+					"enabled": true,
+					"minWaste": "0.15%",
+					"maxTries": 3,
+					"maxCycles": 1
+				}
+			},
+			"advanced": {
+				"dynamicMethodSwitch": {
+					"enabled": true,
+					"threshold": "1s"
+				},
+				"fastMethodForLastStockItems": {
+					"enabled": true,
+					"threshold": "0.80%"
+				},
+				"searchDirection": "auto",
+				"searchPrecision": {
+					"firstLevel": 2147483647,
+					"nextLevels": 1
+				}
+			}
+		}
+	]
+}
