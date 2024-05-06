@@ -24,8 +24,9 @@ namespace BoardFormat.FurnitureLibrary
         public CabinetLimits WidthRange(float staticWidth)
         {
             widthRange.Static = (
-                               widthRange.Min.Equals(default(float))
-                                              && widthRange.Max.Equals(default(float)))
+                widthRange.Min.Equals(default(float))
+                && widthRange.Max.Equals(default(float))
+                )
                 ? staticWidth : throw new Exception("Can't set width static if width range is set");
             return this;
         }
@@ -41,8 +42,9 @@ namespace BoardFormat.FurnitureLibrary
         public CabinetLimits HeightRange(float staticHeight)
         {
             heightRange.Static = (
-                               heightRange.Min.Equals(default(float))
-                                              && heightRange.Max.Equals(default(float)))
+                heightRange.Min.Equals(default(float))
+                && heightRange.Max.Equals(default(float))
+                )
                 ? staticHeight : throw new Exception("Can't set height static if height range is set");
             return this;
         }
@@ -59,7 +61,8 @@ namespace BoardFormat.FurnitureLibrary
         {
             depthRange.Static = (
                 depthRange.Min.Equals(default(float))
-                && depthRange.Max.Equals(default(float)))
+                && depthRange.Max.Equals(default(float))
+                )
                 ? staticDepth : throw new Exception("Can't set depth static if width range is set");
             return this;
         }

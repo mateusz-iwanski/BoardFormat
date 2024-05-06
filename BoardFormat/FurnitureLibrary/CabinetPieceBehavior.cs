@@ -43,13 +43,13 @@ namespace BoardFormat.FurnitureLibrary
         public CabinetPieceBehavior WidthChange(float cabinetWidth)
         {
             float newPieceSize = 0.0f;
-            if (cabinetWidthPieceWidth.TryCorrectSize(cabinetPiece.Width, out newPieceSize))
+            if (cabinetWidthPieceWidth.TryCorrectSize(cabinetWidth, out newPieceSize))
             {
                 cabinetPiece.SetWidth(newPieceSize);
                 newPieceSize = 0.0f;
             }
 
-            if (cabinetWidthPieceLength.TryCorrectSize(cabinetPiece.Length, out newPieceSize))
+            if (cabinetWidthPieceLength.TryCorrectSize(cabinetWidth, out newPieceSize))
             {
                 cabinetPiece.SetLength(newPieceSize);
             }
@@ -60,13 +60,13 @@ namespace BoardFormat.FurnitureLibrary
         public CabinetPieceBehavior HeightChange(float cabinetHeight)
         {
             float newPieceSize = 0.0f;
-            if (cabinetHeightPieceWidth.TryCorrectSize(cabinetPiece.Width, out newPieceSize))
+            if (cabinetHeightPieceWidth.TryCorrectSize(cabinetHeight, out newPieceSize))
             {
                 cabinetPiece.SetWidth(newPieceSize);
                 newPieceSize = 0.0f;
             }
 
-            if (cabinetHeightPieceLength.TryCorrectSize(cabinetPiece.Length, out newPieceSize))
+            if (cabinetHeightPieceLength.TryCorrectSize(cabinetHeight, out newPieceSize))
             {
                 cabinetPiece.SetLength(newPieceSize);
             }
@@ -78,13 +78,13 @@ namespace BoardFormat.FurnitureLibrary
         {
             float newPieceSize = 0.0f;
 
-            if (cabinetDepthPieceWidth.TryCorrectSize(cabinetPiece.Width, out newPieceSize))
+            if (cabinetDepthPieceWidth.TryCorrectSize(cabinetDepth, out newPieceSize))
             {
                 cabinetPiece.SetWidth(newPieceSize);
                 newPieceSize = 0.0f;
             }
 
-            if (cabinetDepthPieceLength.TryCorrectSize(cabinetPiece.Length, out newPieceSize))
+            if (cabinetDepthPieceLength.TryCorrectSize(cabinetDepth, out newPieceSize))
             {
                 cabinetPiece.SetLength(newPieceSize);
             }

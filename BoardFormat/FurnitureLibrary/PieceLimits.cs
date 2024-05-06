@@ -32,7 +32,7 @@ namespace BoardFormat.MVVM.Models
         }
 
         /// <summary>
-        /// Height is Y axis in 2D space. Sometimes is called width.
+        /// GetHeight is Y axis in 2D space. Sometimes is called width.
         /// </summary>
         /// <param name="min">Min size</param>
         /// <param name="max">Max size</param>

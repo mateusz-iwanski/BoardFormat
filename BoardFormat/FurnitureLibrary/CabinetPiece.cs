@@ -66,13 +66,17 @@ namespace BoardFormat.FurnitureLibrary
         public void SetWidth(float width)
         {
             piece.Width = width;
-            Validate();
+            PieceBehavior.widthRange.CheckRange(piece.Width);
+            PieceBehavior.Validate();
+            //Validate();
         }
 
         public void SetLength(float length)
         {
             piece.Length = length;
-            Validate();
+            PieceBehavior.Validate();
+            PieceBehavior.lengthRange.CheckRange(piece.Length);
+            //Validate();
         }
     }
 }

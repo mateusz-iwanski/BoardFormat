@@ -17,11 +17,15 @@ namespace BoardFormat.FurnitureLibrary
         /// Axis Y
         /// </summary>
         /// <returns></returns>
-        public float Height();
+        public float GetHeight();
         /// <summary>
         /// Axis Z
         /// </summary>
         /// <returns></returns>
-        public float Depth();
+        public float GetDepth();
+
+        //public void SetWidth(float width);
+        //public void SetHeight(float height);
+        //public void SetDepth(float depth);
     }
 }

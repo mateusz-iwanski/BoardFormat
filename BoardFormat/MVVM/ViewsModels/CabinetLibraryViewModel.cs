@@ -25,7 +25,7 @@ namespace BoardFormat.MVVM.ViewsModels
                                 pieceType: PieceType.Front,
                                 pieceBehavior: new PieceLimits()
                                     .WidthRange(1000, 1500)  // cabinetPiece length
-                                    .LengthRange(500, 1000),  // cabinetPiece width
+                                    .LengthRange(500, 1300),  // cabinetPiece width
                                 identifier: "front"
                             ),
                 cabinetWidthPieceWidth: new SizeMatch().SetValue(-2),
@@ -60,7 +60,7 @@ namespace BoardFormat.MVVM.ViewsModels
                     ),
                     cabinetLimits: new CabinetLimits()
                         .WidthRange(1000, 1500)
-                        .HeightRange(500, 1000)
+                        .HeightRange(1000, 1600)
                         .DepthRange(1000)
                 )
             );
@@ -68,7 +68,9 @@ namespace BoardFormat.MVVM.ViewsModels
 
         public void AddCabinet(Cabinet cabinet)
         {
-            CabinetCollection.Add(cabinet);
+            CabinetSize cabinetSize = new CabinetSize(width:1100, height:1100, depth:1000);
+            CabinetResizer resize = new CabinetResizer(cabinet).ResizeCabinet(cabinetSize);
+            CabinetCollection.Add(cabinet);            
         }
     }
 }

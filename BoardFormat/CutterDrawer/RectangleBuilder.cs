@@ -84,7 +84,7 @@ namespace BoardFormat.CutterDrawer
                     margin: margin
                 );
 
-                // Add return board size and next is use to set Layout Height
+                // Add return board size and next is use to set Layout GetHeight
                 shapeHeight += heightPointYPosition;
 
             });

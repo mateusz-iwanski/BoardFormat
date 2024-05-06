@@ -9,18 +9,23 @@ namespace BoardFormat.FurnitureLibrary
 {
     public class CabinetResizer
     {
-        public CabinetResizer()
+        private Cabinet cabinet;
+        public CabinetResizer(Cabinet cabinet)
         {
+            this.cabinet = cabinet;
             return;
         }
 
-        public void ResizeCabinet(Cabinet cabinet, ISize size)
+        public CabinetResizer ResizeCabinet(ISize size)
         {
+            cabinet.Size = size;
             foreach (var piece in cabinet.Pieces)
             {
-                piece.cabinetPiece.SetWidth(width);
-                piece.cabinetPiece.SetLength(height);
+                piece.WidthChange(size.GetWidth());
+                piece.HeightChange(size.GetHeight());
+                piece.DepthChange(size.GetDepth());
             }
+            return this;
         }
     }
 }

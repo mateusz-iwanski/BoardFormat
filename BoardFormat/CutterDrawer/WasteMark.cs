@@ -31,7 +31,7 @@ namespace BoardFormat.CutterDrawer
             // Draw line from top left to bottom right
             canvas.DrawLine(StartX, StartY, StartX + Width, StartY + Height);
             // Draw line from top right to bottom left
-            //canvas.DrawLine(StartX + widthRange, StartY, StartX, StartY + Height);
+            //canvas.DrawLine(StartX + widthRange, StartY, StartX, StartY + GetHeight);
         }
     }
 }

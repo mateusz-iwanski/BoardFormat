@@ -34,11 +34,11 @@ namespace BoardFormat.FurnitureLibrary
             return this.value;
         }
 
-        public bool TryCorrectSize(float pieceSize, out float newPieceSize)
+        public bool TryCorrectSize(float cabinetSize, out float newPieceSize)
         {
             if (!nullSet)
             {
-                newPieceSize = pieceSize + value;
+                newPieceSize = cabinetSize + value;
                 return true;
             }
             newPieceSize = default(float);

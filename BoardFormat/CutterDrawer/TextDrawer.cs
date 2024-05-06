@@ -36,7 +36,7 @@ namespace BoardFormat.CutterDrawer
         /// Meassure the text width and height
         /// </summary>
         /// <param name="text">text to measure</param>
-        /// <returns>(widthRange, Height)</returns>
+        /// <returns>(widthRange, GetHeight)</returns>
         public (float, float) TextMeassure(string text)
         {
             var paint = new SKPaint
