@@ -10,6 +10,7 @@ public partial class CabinetLibraryView : ContentPage
 {	
 	PieceCollectionViewModel pieceCollectionViewModel;
 	CabinetLibraryViewModel cabinetLibraryViewModel;
+
 	public CabinetLibraryView(PieceCollectionViewModel pieceCollectionViewModel)
 	{
 		InitializeComponent();
@@ -25,7 +26,7 @@ public partial class CabinetLibraryView : ContentPage
 		foreach (Cabinet cabinet in cabinetsLibrary)
 			cabinet.Pieces.ForEach(cabinetPieceBehavior =>
 			{
-				pieceCollectionViewModel.Pieces.Add(cabinetPieceBehavior.cabinetPiece.piece);
+				pieceCollectionViewModel.Pieces.Add(cabinetPieceBehavior.cabinetPiece.Piece);
 			});
 			
    //     pieceCollectionViewModel.Pieces.Add(new Piece(

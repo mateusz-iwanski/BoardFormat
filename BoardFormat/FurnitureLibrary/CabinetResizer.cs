@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BoardFormat.FurnitureLibrary
 {
-    public class CabinetResizer
+    public class CabinetResizer : ICabinetResize
     {
         private Cabinet cabinet;
         public CabinetResizer(Cabinet cabinet)
@@ -16,7 +16,7 @@ namespace BoardFormat.FurnitureLibrary
             return;
         }
 
-        public CabinetResizer ResizeCabinet(ISize size)
+        public ICabinetResize ResizeCabinet(ICabinetSize<float> size)
         {
             cabinet.Size = size;
             foreach (var piece in cabinet.Pieces)

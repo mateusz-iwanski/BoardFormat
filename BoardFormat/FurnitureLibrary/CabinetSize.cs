@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace BoardFormat.FurnitureLibrary
 {
-    public class CabinetSize : ISize
+    public class CabinetSize<T> : ICabinetSize<T> where T : IComparable<T>
     {
-        float depth { get; set; }
-        float height { get; set; }
-        float width { get; set; }
+        T depth { get; set; }
+        T height { get; set; }
+        T width { get; set; }
 
-        public CabinetSize(float width, float height, float depth)
+        public CabinetSize(T width, T height, T depth)
         {
             this.width = width;
             this.height = height;
@@ -21,36 +21,24 @@ namespace BoardFormat.FurnitureLibrary
 
         public CabinetSize()
         {
-            this.width = default(float);
-            this.height = default(float);
-            this.depth = default(float);
+            this.width = default(T);
+            this.height = default(T);
+            this.depth = default(T);
         }
 
-        public float GetDepth()
+        public T GetDepth()
         {
             return depth;
         }
 
-        public float GetHeight()
+        public T GetHeight()
         {
             return height;
         }
 
-        public float GetWidth()
+        public T GetWidth()
         {
             return width;
         }
-        //public void SetDepth(float depth)
-        //{
-        //    this.depth = depth;
-        //}
-        //public void SetHeight(float height)
-        //{
-        //    this.height = height;
-        //}
-        //public void SetWidth(float width)
-        //{
-        //    this.width = width;
-        //}
     }
 }

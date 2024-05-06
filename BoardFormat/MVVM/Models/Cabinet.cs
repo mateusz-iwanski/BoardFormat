@@ -20,8 +20,7 @@ namespace BoardFormat.MVVM.Models
         public string Name { get => name; set => name = value; }
         public Image Image { get => image; set => image = value; }
         public string? Description { get => description; set => description = value; }
-
-        public ISize Size { get; set; } = new CabinetSize();
+        public ICabinetSize<float> Size { get; set; } = new CabinetSize<float>();
 
         List<Accessories> accessories;        
         List<CabinetPieceBehavior> pieceCollection;
@@ -65,11 +64,6 @@ namespace BoardFormat.MVVM.Models
             this.Pieces = pieces;
             this.Category = category;
             this.Behavior = cabinetLimits;
-        }
-
-        public void MaxHeight(float height)
-        {
-            //this.Behavior.GetHeight = height;
         }
     }
 }

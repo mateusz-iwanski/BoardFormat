@@ -8,18 +8,19 @@ using System.Threading.Tasks;
 namespace BoardFormat.MVVM.Models
 {
     /// <summary>
-    /// It is a struct that contains a cabinetPiece type and a cabinetPiece behavior.
+    /// Class that contains a cabinetPiece type and a cabinetPiece behavior.
     /// Every cabinetPiece whith some kind of type has size behavior. 
-    /// Piece will can change size between min and max values or 
-    /// has static size.
+    /// Piece will can change every size on axis between min and max range values or 
+    /// has static value.
     /// </summary>
     public class PieceLimits
     {
+        // min max range of piece or static size
         public MinMaxStatic<float> widthRange { get; private set; }
         public MinMaxStatic<float> lengthRange { get; private set; }
 
         /// <summary>
-        /// GetWidth is X axis in 2D space. Sometimes is called length.
+        /// GetWidth is X axis range in 2D space. Sometimes is called length.
         /// </summary>
         /// <param name="min">Min size</param>
         /// <param name="max">Max size</param>
@@ -32,7 +33,7 @@ namespace BoardFormat.MVVM.Models
         }
 
         /// <summary>
-        /// GetHeight is Y axis in 2D space. Sometimes is called width.
+        /// LengthRange set range on X axis in 2D space. Sometimes is called width.
         /// </summary>
         /// <param name="min">Min size</param>
         /// <param name="max">Max size</param>
@@ -45,7 +46,7 @@ namespace BoardFormat.MVVM.Models
         }
 
         /// <summary>
-        /// Set if cabinetPiece has static size.
+        /// WidthRange set range on Y axis in 2D space. Sometimes is called height.
         /// </summary>
         /// <param name="staticWidth">Statitc width</param>
         public PieceLimits WidthRange(float staticWidth)
@@ -58,7 +59,7 @@ namespace BoardFormat.MVVM.Models
         }
 
         /// <summary>
-        /// Set if cabinetPiece has static size.
+        /// Set if cabinetPiece has static size, without range.
         /// </summary>
         /// <param name="staticHeight">Static height</param>
         public PieceLimits LengthRange(float staticHeight)

@@ -6,26 +6,22 @@ using System.Threading.Tasks;
 
 namespace BoardFormat.FurnitureLibrary
 {
-    public interface ISize
+    public interface ICabinetSize<T>
     {
         /// <summary>
         ///  Axis X
         /// </summary>
         /// <returns></returns>
-        public float GetWidth();
+        public T GetWidth();
         /// <summary>
         /// Axis Y
         /// </summary>
         /// <returns></returns>
-        public float GetHeight();
+        public T GetHeight();
         /// <summary>
         /// Axis Z
         /// </summary>
         /// <returns></returns>
-        public float GetDepth();
-
-        //public void SetWidth(float width);
-        //public void SetHeight(float height);
-        //public void SetDepth(float depth);
+        public T GetDepth();
     }
 }

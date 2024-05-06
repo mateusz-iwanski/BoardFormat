@@ -36,6 +36,24 @@ namespace BoardFormat.MVVM.ViewsModels
                 cabinetDepthPieceLength: new SizeMatch().SetNull()  // do nothing
                 );
 
+            //create CabinetPieceBehavior for testing
+            CabinetPieceBehavior cabinetPieceCollection2 = new CabinetPieceBehavior(
+                               piece: new CabinetPiece(
+                                    cabinetId: Guid.NewGuid(),
+                                    pieceType: PieceType.Left,
+                                    //pieceBehavior: new PieceLimits()
+                                    //.WidthRange(1000, 1500)  // cabinetPiece length
+                                    //.LengthRange(500, 1300),  // cabinetPiece width
+                                    identifier: "front"
+                                    ),
+                                    cabinetWidthPieceWidth: new SizeMatch().SetNull(),  // do nothing
+                                    cabinetWidthPieceLength: new SizeMatch().SetNull(),  // do nothing
+                                    cabinetHeightPieceWidth: new SizeMatch().SetNull(),  // do nothing
+                                    cabinetHeightPieceLength: new SizeMatch().SetValue(0),
+                                    cabinetDepthPieceWidth: new SizeMatch().SetValue(0),  
+                                    cabinetDepthPieceLength: new SizeMatch().SetNull()   // do nothing
+                                    );
+
             AddCabinet(new Cabinet(
                     symbol: "symbol",
                     name: "name",
@@ -47,6 +65,7 @@ namespace BoardFormat.MVVM.ViewsModels
                     pieces: new List<CabinetPieceBehavior>()
                     {
                             cabinetPieceCollection,
+                            cabinetPieceCollection2,
                     },
                     category: new CabinetCategory(
                         destiny: new List<CabinetDestiny>()
@@ -68,9 +87,9 @@ namespace BoardFormat.MVVM.ViewsModels
 
         public void AddCabinet(Cabinet cabinet)
         {
-            CabinetSize cabinetSize = new CabinetSize(width:1100, height:1100, depth:1000);
-            CabinetResizer resize = new CabinetResizer(cabinet).ResizeCabinet(cabinetSize);
-            CabinetCollection.Add(cabinet);            
+            CabinetSize<float> cabinetSize = new CabinetSize<float>(width:1200, height:1100, depth:1000);
+            ICabinetResize resize = new CabinetResizer(cabinet).ResizeCabinet(cabinetSize);
+            CabinetCollection.Add(cabinet);          
         }
     }
 }

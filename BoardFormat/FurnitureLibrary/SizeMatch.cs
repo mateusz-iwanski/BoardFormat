@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace BoardFormat.FurnitureLibrary
 {
+    /// <summary>
+    /// This class is used to match width and length of piece when 
+    /// cabinet changes dimension in 3d.
+    /// Look on CabinetPieceBehavior class.
+    /// </summary>
     public class SizeMatch : ISizeMatch
     {
         float value { get; set; }
@@ -17,14 +22,20 @@ namespace BoardFormat.FurnitureLibrary
             nullSet = false;
             return this;
         }
-
-        // do nothing
+        /// <summary>
+        /// If is value is set to null, the value is not used.
+        /// </summary>
+        /// <returns>SizeMatch</returns>
         public SizeMatch SetNull()
         {
             nullSet = true;
             return this;
         }
 
+        /// <summary>
+        /// Get seted value. If value was set to null, return null.
+        /// </summary>
+        /// <returns></returns>
         public float? GetValue()
         {
             if (nullSet)
@@ -34,11 +45,18 @@ namespace BoardFormat.FurnitureLibrary
             return this.value;
         }
 
-        public bool TryCorrectSize(float cabinetSize, out float newPieceSize)
+        /// <summary>
+        /// If value wasn't set to null, return true and out newPieceSize is the pieceSize corrected,
+        /// by value wich was set before. 
+        /// </summary>
+        /// <param name="pieceSize"></param>
+        /// <param name="newPieceSize"></param>
+        /// <returns></returns>
+        public bool TryCorrectSize(float pieceSize, out float newPieceSize)
         {
             if (!nullSet)
             {
-                newPieceSize = cabinetSize + value;
+                newPieceSize = pieceSize + value;
                 return true;
             }
             newPieceSize = default(float);

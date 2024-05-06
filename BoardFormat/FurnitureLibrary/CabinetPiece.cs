@@ -15,30 +15,31 @@ namespace BoardFormat.FurnitureLibrary
     /// </summary>
     public struct CabinetPiece
     {
-        public Guid CabinetId { get; private set; }
-        public Piece piece { get; private set; }
+        private Piece piece { get; set; }
+        
+        public Guid CabinetId { get; private set; }        
         public PieceType PieceType { get; private set; }
-        public PieceLimits PieceBehavior { get; private set; }
+        // we can disable checking behavior of piece
+        // if is disable we don't need to set range of piece size
+        public PieceLimits? PieceBehavior { get; private set; }
         public string Identifier { get; private set; }
-        public float Length { get => piece.Length; }
-        public float Width { get => piece.Width; }
+        public Piece Piece { get => piece; }
 
         /// <summary>
         /// Create cabinetPiece for cabinet.
         /// For the first time we will set empty cabinetPiece with specific behavior,
         /// type, etc. Piece will be set when cabinet will have size, etc.
         /// </summary>
-        /// <param name="pieceType"></param>
-        /// <param name="pieceBehavior"></param>
+        /// <param name="pieceType"></param>        
         /// <param name="cabinetId"></param>
         /// <param name="identifier"></param>
         /// <param name="piece"></param>
+        /// <param name="pieceBehavior">Disable/Enable checking behavior of piece</param>
         public CabinetPiece(            
-            PieceType pieceType, 
-            PieceLimits pieceBehavior,
+            PieceType pieceType,             
             Guid cabinetId,
-            string identifier
-            //Piece cabinetPiece
+            string identifier,
+            PieceLimits? pieceBehavior = null
             )
         {
             // set default cabinetPiece, we will set it later when cabinet will have change size from default size
@@ -47,36 +48,27 @@ namespace BoardFormat.FurnitureLibrary
             this.PieceBehavior = pieceBehavior;
             this.CabinetId = cabinetId;
             this.Identifier = identifier;
-            //Validate();
-        }
-
-        /// <summary>
-        /// Validate when cabinet change size.
-        /// </summary>
-        private void Validate()
-        {
-            // first check that range is set
-            PieceBehavior.Validate();
-            // then check if cabinetPiece size is in range
-            // look out! Piece.Length is width and Piece.GetWidth is height
-            PieceBehavior.widthRange.CheckRange(piece.Width);
-            PieceBehavior.lengthRange.CheckRange(piece.Length);
         }
 
         public void SetWidth(float width)
         {
             piece.Width = width;
-            PieceBehavior.widthRange.CheckRange(piece.Width);
-            PieceBehavior.Validate();
-            //Validate();
+            if (PieceBehavior != null)
+            {
+                PieceBehavior.Validate();
+                PieceBehavior.widthRange.CheckRange(piece.Width);
+            }
         }
 
         public void SetLength(float length)
         {
             piece.Length = length;
-            PieceBehavior.Validate();
-            PieceBehavior.lengthRange.CheckRange(piece.Length);
-            //Validate();
+            if (PieceBehavior != null)
+            {
+
+                PieceBehavior.Validate();
+                PieceBehavior.lengthRange.CheckRange(piece.Length);
+            }
         }
     }
 }
