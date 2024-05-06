@@ -21,6 +21,7 @@ namespace BoardFormat.MVVM.Models
         public Image Image { get => image; set => image = value; }
         public string? Description { get => description; set => description = value; }
 
+        public ISize size { get; set; } = new CabinetSize();
 
         List<Accessories> accessories;        
         List<CabinetPieceBehavior> pieceCollection;
@@ -32,6 +33,19 @@ namespace BoardFormat.MVVM.Models
         public CabinetCategory Category { get => category; set => category = value; }
         public CabinetLimits Behavior { get => behavior; set => behavior = value; }
 
+
+        /// <summary>
+        /// For the first time we will set empty cabinet with specific behavior, type, etc. 
+        /// Size and piece collection will be set when cabinet will have change size from default size.
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="name"></param>
+        /// <param name="image"></param>
+        /// <param name="accessories"></param>
+        /// <param name="pieces"></param>
+        /// <param name="category"></param>
+        /// <param name="cabinetLimits"></param>
+        /// <param name="description"></param>
         public Cabinet(
             string symbol, 
             string name, 

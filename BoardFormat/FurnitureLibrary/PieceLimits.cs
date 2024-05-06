@@ -19,7 +19,7 @@ namespace BoardFormat.MVVM.Models
         public MinMaxStatic<float> lengthRange { get; private set; }
 
         /// <summary>
-        /// Width is X axis in 2D space. Sometimes is called length.
+        /// GetWidth is X axis in 2D space. Sometimes is called length.
         /// </summary>
         /// <param name="min">Min size</param>
         /// <param name="max">Max size</param>

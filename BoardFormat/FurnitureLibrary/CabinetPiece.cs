@@ -58,7 +58,7 @@ namespace BoardFormat.FurnitureLibrary
             // first check that range is set
             PieceBehavior.Validate();
             // then check if cabinetPiece size is in range
-            // look out! Piece.Length is width and Piece.Width is height
+            // look out! Piece.Length is width and Piece.GetWidth is height
             PieceBehavior.widthRange.CheckRange(piece.Width);
             PieceBehavior.lengthRange.CheckRange(piece.Length);
         }
