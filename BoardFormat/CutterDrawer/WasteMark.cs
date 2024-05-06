@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BoardFormat.CutterDrawer
 {
     /// <summary>
-    /// Mark waste/rest/unused piece
+    /// Mark waste/rest/unused cabinetPiece
     /// Add element inside rectangle
     /// </summary>
     public class WasteMark : ShapeDrawer

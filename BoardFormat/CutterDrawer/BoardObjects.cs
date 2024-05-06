@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BoardFormat.CutterDrawer
 {
     /// <summary>
-    /// For one BoardObjects is one GraphicsView with one board with pieces drawable
+    /// For one BoardObjects is one GraphicsView with one board with pieceCollection drawable
     /// </summary>
     public struct BoardObjects
     {

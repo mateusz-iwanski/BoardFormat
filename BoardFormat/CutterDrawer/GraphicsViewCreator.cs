@@ -25,7 +25,7 @@ namespace BoardFormat.CutterDrawer
 
         /// <summary>
         /// Creates the GraphicsView with the specified parameters.
-        /// Graphics (one board with pieces) is children of layout. 
+        /// Graphics (one board with pieceCollection) is children of layout. 
         /// Dynamically change layout height when shape height size is scalling
         /// and dynamically change shape width if layout width is changing
         /// </summary>
@@ -48,10 +48,10 @@ namespace BoardFormat.CutterDrawer
                     foreach (var element in BoardObject)
                     {
 
-                        // create board with pieces drawable and add to layout
+                        // create board with pieceCollection drawable and add to layout
                         if (element.BoardWithPieceCollection.Count > 0)
                         {
-                            // make shapes (one board and pieces inside) drawable                         
+                            // make shapes (one board and pieceCollection inside) drawable                         
                             var drawable = new CutterDrawer.ShapeDrawable(
                                 pieceToDrawCollection: element.BoardWithPieceCollection,
                                 scaleToWidth: scaleToWidth,

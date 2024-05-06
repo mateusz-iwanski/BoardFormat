@@ -26,7 +26,7 @@ namespace BoardFormat.CutterReader
             CuttingPiece? piece = null;
             
             _reader.dataOutputs.cuttings.ForEach(cutting =>
-                    //if (piece == null)
+                    //if (cabinetPiece == null)
                     piece = cutting.pieces.FirstOrDefault(p => p.pieceId == pieceId) ?? piece
             );
 

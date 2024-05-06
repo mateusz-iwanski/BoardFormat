@@ -34,9 +34,8 @@ namespace TonCut
             this._WSClientCommander = _wSClientCommander._Command != null 
                 ? _wSClientCommander 
                 : throw new Exception("Set command for WSClientCommander first!");
-
+            
             Setup("ws://localhost:8080", "basic", WebSocketVersion.Rfc6455);
-            //Setup("ws://10.156.0.130:8080", "basic", WebSocketVersion.Rfc6455);
         }
 
         private void Setup(string url, string protocol, WebSocketVersion version)

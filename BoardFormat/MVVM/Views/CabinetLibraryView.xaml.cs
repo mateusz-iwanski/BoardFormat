@@ -23,9 +23,9 @@ public partial class CabinetLibraryView : ContentPage
 		IEnumerable<Cabinet> cabinetsLibrary = cabinetLibraryViewModel.CabinetCollection;
 
 		foreach (Cabinet cabinet in cabinetsLibrary)
-			cabinet.Pieces.ForEach(piece =>
+			cabinet.Pieces.ForEach(cabinetPieceBehavior =>
 			{
-				pieceCollectionViewModel.Pieces.Add(piece.Piece);
+				pieceCollectionViewModel.Pieces.Add(cabinetPieceBehavior.cabinetPiece.piece);
 			});
 			
    //     pieceCollectionViewModel.Pieces.Add(new Piece(

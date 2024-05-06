@@ -113,7 +113,7 @@ public partial class CutterDrawerView : ContentView
 
     /// <summary>
     /// Create list of Shapes to draw. 
-    /// List<BoardObjects> board with pieces drawable for GraphicsView.
+    /// List<BoardObjects> board with pieceCollection drawable for GraphicsView.
     /// It's a first function you have to use before create graphics.
     /// </summary>
     public void Draw()
@@ -156,7 +156,7 @@ public partial class CutterDrawerView : ContentView
                 PieceToDrawList.Add(new WastePiece(rest: rest, stock: stockInputData).Waste);
             });
 
-            // Add board with pieces to draw to collection
+            // Add board with pieceCollection to draw to collection
             BoardWithPiecesObjects.Add(new BoardObjects()
             {
                 BoardGraphicsView = new GraphicsView(),

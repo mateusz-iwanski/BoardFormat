@@ -44,7 +44,7 @@ namespace BoardFormat.CutterDrawer
             return;
         }
 
-        // Get the maximum length value from the list of boards with pieces to draw.
+        // Get the maximum length value from the list of boards with pieceCollection to draw.
         // The longest should be always length of one of the board
         // Every graphics view should by scale by the longest element 
         public float GetMaxFromPieceToDrawCollection(List<PieceToDraw> listPiece) =>

@@ -17,13 +17,6 @@ namespace BoardFormat.CutterDrawer
     {
         private PieceToDraw Piece { get; set; }
         private ShapeDrawer Shape { get; set; }
-        //przemyslec jak to zrobic
-        public List<ShapeDrawer> Shapes { get; set; } = new List<ShapeDrawer>();
-
-        // DimensionText settings
-
-        // Centered text (identifier/description) settings
-
 
         public RectangleAdditionalElements(
             ShapeDrawer shape,
@@ -32,13 +25,11 @@ namespace BoardFormat.CutterDrawer
         {
             Piece = pieceObject;
             Shape = shape;
-
-
             return;
         }
 
 
-        // Check minimum length and width for piece size draw.
+        // Check minimum length and width for cabinetPiece size draw.
         // if not has requires size, return false.
         // widthRange and Length are in cm.
         public bool RequiredPieceSizeForPieceSizeDraw(PieceToDraw piece) =>
@@ -79,22 +70,12 @@ namespace BoardFormat.CutterDrawer
 
         public void MakeStructure(ICanvas canvas)
         {
-            if (Piece.BoardHasStructure)
-            {
-                new Structure(
-                    piece: Piece,
-                    shape: Shape
-                    ).Draw(canvas);
-            }
+            new Structure(
+                piece: Piece,
+                shape: Shape
+                ).Draw(canvas);
         }
 
-        //public void Draw(ICanvas canvas)
-        //{
-        //    foreach (var shape in Shapes)
-        //    {
-        //        shape.Draw(canvas);
-        //    }
-        //}
 
         public void Draw(
             ICanvas canvas,
@@ -105,8 +86,10 @@ namespace BoardFormat.CutterDrawer
             bool centeredText = true
             )
         {
-            if (structure) MakeStructure(canvas);
-            if (pieceSizeDraw) MakePieceSizeDraw(canvas);
+            if (structure && Piece.BoardHasStructure) 
+                MakeStructure(canvas);
+            if (pieceSizeDraw && RequiredPieceSizeForPieceSizeDraw(Piece)) 
+                MakePieceSizeDraw(canvas);
 
             switch (Piece.Type)
             {

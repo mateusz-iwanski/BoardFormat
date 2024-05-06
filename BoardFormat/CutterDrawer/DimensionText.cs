@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BoardFormat.CutterDrawer
 {
     /// <summary>
-    /// Draw size width and height of the piece inside rectangle.
+    /// Draw size width and height of the cabinetPiece inside rectangle.
     /// Draw on the center left and center top side of the rectangle.
     /// </summary>
     public class DimensionText : TextDrawer

@@ -18,6 +18,24 @@ namespace BoardFormat.MVVM.ViewsModels
         {
             CabinetCollection = new ObservableCollection<BoardFormat.MVVM.Models.Cabinet>();
 
+            CabinetPieceBehavior cabinetPieceCollection = new CabinetPieceBehavior(
+                piece: new CabinetPiece(
+                                cabinetId: Guid.NewGuid(),
+                                //cabinetPiece: new Piece(length: 1100, width: 500, structure: true),
+                                pieceType: PieceType.Front,
+                                pieceBehavior: new PieceLimits()
+                                    .WidthRange(1000, 1500)  // cabinetPiece length
+                                    .LengthRange(500, 1000),  // cabinetPiece width
+                                identifier: "front"
+                            ),
+                cabinetWidthPieceWidth: new SizeMatch().SetValue(-2),
+                cabinetWidthPieceLength: new SizeMatch().SetValue(-2),
+                cabinetHeightPieceWidth: new SizeMatch().SetValue(-2),
+                cabinetHeightPieceLength: new SizeMatch().SetValue(-2),
+                cabinetDepthPieceWidth: new SizeMatch().SetNull(),  // do nothing
+                cabinetDepthPieceLength: new SizeMatch().SetNull()  // do nothing
+                );
+
             AddCabinet(new Cabinet(
                     symbol: "symbol",
                     name: "name",
@@ -26,15 +44,9 @@ namespace BoardFormat.MVVM.ViewsModels
                     {
                             new Accessories("symbol", "name", new Image(), "description"),
                     },
-                    pieces: new List<CabinetPiece>()
+                    pieces: new List<CabinetPieceBehavior>()
                     {
-                            new CabinetPiece(
-                                piece: new Piece(length: 1100, width: 500, structure:true),
-                                pieceType: PieceType.DrawerLeft,
-                                pieceBehavior: new PieceBehavior()
-                                    .WidthRange(1000, 1500)  // piece length
-                                    .LengthRange(500, 1000)  // piece width
-                            ),
+                            cabinetPieceCollection,
                     },
                     category: new CabinetCategory(
                         destiny: new List<CabinetDestiny>()
@@ -45,7 +57,11 @@ namespace BoardFormat.MVVM.ViewsModels
                         {
                                 CabinetType.Drawer
                         }
-                    )
+                    ),
+                    cabinetLimits: new CabinetLimits()
+                        .WidthRange(1000, 1500)
+                        .HeightRange(500, 1000)
+                        .DepthRange(1000)
                 )
             );
         }

@@ -23,21 +23,24 @@ namespace BoardFormat.MVVM.Models
 
 
         List<Accessories> accessories;        
-        List<CabinetPiece> pieces;
+        List<CabinetPieceBehavior> pieceCollection;
         CabinetCategory category;
+        CabinetLimits behavior;
 
         public List<Accessories> Accessories { get => accessories; set => accessories = value; }
-        public List<CabinetPiece> Pieces { get => pieces; set => pieces = value; }
+        public List<CabinetPieceBehavior> Pieces { get => pieceCollection; set => pieceCollection = value; }
         public CabinetCategory Category { get => category; set => category = value; }
+        public CabinetLimits Behavior { get => behavior; set => behavior = value; }
 
         public Cabinet(
             string symbol, 
             string name, 
             Image image,             
             List<Accessories> accessories,
-            List<CabinetPiece> pieces,
+            List<CabinetPieceBehavior> pieces,
             CabinetCategory category,
-            string? description = null
+            CabinetLimits cabinetLimits,
+            string? description = null           
             )
         {
             this.Symbol = symbol;
@@ -47,6 +50,12 @@ namespace BoardFormat.MVVM.Models
             this.Accessories = accessories;
             this.Pieces = pieces;
             this.Category = category;
+            this.Behavior = cabinetLimits;
+        }
+
+        public void MaxHeight(float height)
+        {
+            //this.Behavior.Height = height;
         }
     }
 }

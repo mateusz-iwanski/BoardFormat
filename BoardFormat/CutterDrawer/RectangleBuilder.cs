@@ -8,8 +8,8 @@ namespace BoardFormat.CutterDrawer
 {
     /// <summary>
     /// The RectangleBuilder class is responsible for constructing list of Shapes (rectangles). 
-    /// It is used to build board and usable pieces to draw on canvas.
-    /// Look out! For Carpenter/Specialist length of piece/board is width for graphics/layouts and
+    /// It is used to build board and usable pieceCollection to draw on canvas.
+    /// Look out! For Carpenter/Specialist length of cabinetPiece/board is width for graphics/layouts and
     /// width is height for graphics/layouts elements.
     /// </summary>
     public class RectangleBuilder
@@ -40,8 +40,8 @@ namespace BoardFormat.CutterDrawer
             float scaledWidth = (float)piece.Width * imageScale;
             float scaledLength = (float)piece.Length * imageScale;
 
-            // Look out! For carpenter length of piece and board is width.
-            // Board/piece width is height for graphics/layouts elements.
+            // Look out! For carpenter length of cabinetPiece and board is width.
+            // Board/cabinetPiece width is height for graphics/layouts elements.
             RectangleShapes.Add(
                 new Rectangle(
                     x: scaledX,
@@ -52,14 +52,14 @@ namespace BoardFormat.CutterDrawer
                     )
                 );
 
-            // if piece is board, send width of board + margin
+            // if cabinetPiece is board, send width of board + margin
             return piece.Type == DrawerType.Board ? margin + scaledWidth : 0;
         }
 
         
         /// <summary>
         /// The Build method in the RectangleBuilder class is responsible for constructing 
-        /// board and pieces to draw on canvas. Rectangles are build from the list of Board 
+        /// board and pieceCollection to draw on canvas. Rectangles are build from the list of Board 
         /// and pices inside.
         /// </summary>
         /// <param name="pieceToDrawListCollection"></param>

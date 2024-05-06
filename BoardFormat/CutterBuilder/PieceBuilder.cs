@@ -24,9 +24,9 @@ namespace BoardFormat.CutterBuilder
         int surplus { get; set; }
         int margin { get; set; }
         /// <summary>
-        /// When bold is true piece has thickness as material * 2, 
-        /// we add two pieces to list with veneer 42mm set to one of piece.        
-        /// Otherwise we add one piece with 21mm veneer
+        /// When bold is true cabinetPiece has thickness as material * 2, 
+        /// we add two pieceCollection to list with veneer 42mm set to one of cabinetPiece.        
+        /// Otherwise we add one cabinetPiece with 21mm veneer
         /// We have default (18mm)/ assigned to board/ unicolour/ structure/ gloss type of veneer.
         /// We should have a list of veneer for all board colours/structures
         /// </summary>

@@ -9,6 +9,7 @@ namespace BoardFormat.FurnitureLibrary
     public enum PieceType
     {
         TopWreath,          // górny wienie
+        TopWreathBar,       // górny wieniec listwa
         BottomWreath,       // dolny wieniec
         Left,               // lewy
         Right,              // prawy
@@ -23,6 +24,7 @@ namespace BoardFormat.FurnitureLibrary
         Partition,          // przegroda
         Leg,                // noga
         Panel,              // panel
+        Plinth,             // cokoł
         Other,              // inne
     }
 }
