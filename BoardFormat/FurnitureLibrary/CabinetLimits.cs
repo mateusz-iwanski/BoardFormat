@@ -9,9 +9,9 @@ namespace BoardFormat.FurnitureLibrary
 {
     public class CabinetLimits
     {
-        public MinMaxStatic<float> depthRange { get; private set; }
-        public MinMaxStatic<float> heightRange { get; private set; }
-        public MinMaxStatic<float> widthRange { get; private set; }
+        public MinMaxStatic<float> depthRange { get; private set; } = new MinMaxStatic<float>();
+        public MinMaxStatic<float> heightRange { get; private set; } = new MinMaxStatic<float>();
+        public MinMaxStatic<float> widthRange { get; private set; } = new MinMaxStatic<float>();
 
         public CabinetLimits WidthRange(float min, float max)
         {
