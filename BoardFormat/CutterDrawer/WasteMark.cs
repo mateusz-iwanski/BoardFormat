@@ -12,8 +12,11 @@ namespace BoardFormat.CutterDrawer
     /// </summary>
     public class WasteMark : ShapeDrawer
     {
+        private PieceToDraw Piece { get; set; }
+
         public WasteMark(
-            ShapeDrawer shape,            
+            ShapeDrawer shape,
+            PieceToDraw piece,
             Color? strokeColor = null, float? strokeSize = null
             ) : base(
                     startX: shape.StartX, startY: shape.StartY,
@@ -22,16 +25,21 @@ namespace BoardFormat.CutterDrawer
                     strokeSize: strokeSize
                 )
         {
+            Piece = piece;
             return;
         }
 
         public override void Draw(ICanvas canvas)
         {
-            Format.FormatCanvas(canvas);
-            // Draw line from top left to bottom right
-            canvas.DrawLine(StartX, StartY, StartX + Width, StartY + Height);
-            // Draw line from top right to bottom left
-            //canvas.DrawLine(StartX + widthRange, StartY, StartX, StartY + GetHeight);
+            // only for waste
+            if (DrawerType.Waste == Piece.Type)
+            {
+                Format.FormatCanvas(canvas);
+                // Draw line from top left to bottom right
+                canvas.DrawLine(StartX, StartY, StartX + Width, StartY + Height);
+                // Draw line from top right to bottom left
+                //canvas.DrawLine(StartX + widthRange, StartY, StartX, StartY + GetHeight);
+            }
         }
     }
 }

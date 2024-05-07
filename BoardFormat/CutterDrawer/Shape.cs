@@ -35,6 +35,14 @@ namespace BoardFormat.CutterDrawer
         }
 
         public abstract void Draw(ICanvas canvas);
+
+        public virtual void Draw(ICanvas canvas, bool exhibit)
+        {
+            if (exhibit)
+            {
+                Draw(canvas);
+            }
+        }
         public virtual void SetFormat(ICanvas canvas)
         {
             Format.FormatCanvas(canvas);

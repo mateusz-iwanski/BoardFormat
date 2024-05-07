@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoardFormat.MVVM.Models
 {
-    public class BaseMaterial
+    public abstract class BaseMaterial
     {
         public float length { get; set; }  // Look out! for cutter engine is length, but for the rest of the world is width
         public float width { get; set; }  // Look out! for cutter engine is width, but for the rest of the world is heigth 

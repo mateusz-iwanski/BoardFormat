@@ -47,10 +47,18 @@ namespace BoardFormat.CutterDrawer
             canvas.DrawRectangle(StartX, StartY, Width, Height);
 
             // add additional elements
-            new RectangleAdditionalElements(
-                        shape: this,    
-                        pieceObject: Piece
-                        ).Draw(canvas);
+            var additionalElements = new RectangleAdditionalElements();
+
+            if (additionalElements.RequiredPieceSize(Piece))
+                additionalElements.Add(new DimensionText(shape: this, piece: Piece));
+            if (Piece.BoardHasStructure)
+                additionalElements.Add(new Structure(shape: this, piece: Piece));
+
+            additionalElements.Add(new Veneer(shape: this ,piece: Piece));
+            additionalElements.Add(new WasteMark(shape: this, piece: Piece));
+            additionalElements.Add(new CenteredText(shape: this, piece: Piece));
+            additionalElements.Draw(canvas);
+
 
         }
     }

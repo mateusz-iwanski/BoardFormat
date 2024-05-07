@@ -15,93 +15,24 @@ namespace BoardFormat.CutterDrawer
     /// </summary>
     public class RectangleAdditionalElements
     {
-        private PieceToDraw Piece { get; set; }
-        private ShapeDrawer Shape { get; set; }
+        private List<ShapeDrawer> shapeCollection { get; set; } = new List<ShapeDrawer>();
 
-        public RectangleAdditionalElements(
-            ShapeDrawer shape,
-            PieceToDraw pieceObject
-            ) 
-        {
-            Piece = pieceObject;
-            Shape = shape;
-            return;
-        }
+        public RectangleAdditionalElements() { return; }
 
-
-        // Check minimum length and width for cabinetPiece size draw.
-        // if not has requires size, return false.
+        // Check minimum length and width for pice size.
+        // If not has required size, return false.
         // widthRange and Length are in cm.
-        public bool RequiredPieceSizeForPieceSizeDraw(PieceToDraw piece) =>
+        public bool RequiredPieceSize(PieceToDraw piece) =>
             (piece.Width > 10 && piece.Length > 10) ? true : false;
 
-
-        public void MakeVeneer(ICanvas canvas)
-        {
-            new Veneer(
-                shape: Shape,
-                piece: Piece
-                ).Draw(canvas);
-        }
-
-        public void MakeWasteMark(ICanvas canvas)
-        {
-            new WasteMark(
-                shape: Shape
-                ).Draw(canvas);
-        }
-
-        public void MakePieceSizeDraw(ICanvas canvas)
-        {
-            if (RequiredPieceSizeForPieceSizeDraw(Piece))
-                new DimensionText(
-                        shape: Shape,
-                        piece: Piece
-                    ).Draw(canvas);
-        }
-
-        public void MakeCenterText(ICanvas canvas)
-        {
-            new CenteredText(
-                shape: Shape,
-                piece: Piece
-                ).Draw(canvas);
-        }
-
-        public void MakeStructure(ICanvas canvas)
-        {
-            new Structure(
-                piece: Piece,
-                shape: Shape
-                ).Draw(canvas);
-        }
-
+        public void Add(ShapeDrawer shape) => shapeCollection.Add(shape);
 
         public void Draw(
-            ICanvas canvas,
-            bool veneer = true,
-            bool wasteMartk = true,
-            bool pieceSizeDraw = true,
-            bool structure = true,
-            bool centeredText = true
+            ICanvas canvas
             )
         {
-            if (structure && Piece.BoardHasStructure) 
-                MakeStructure(canvas);
-            if (pieceSizeDraw && RequiredPieceSizeForPieceSizeDraw(Piece)) 
-                MakePieceSizeDraw(canvas);
-
-            switch (Piece.Type)
-            {
-                case DrawerType.Piece:
-                    if (veneer) MakeVeneer(canvas);
-                    if (centeredText) MakeCenterText(canvas);
-                    break;
-
-                case DrawerType.Waste:
-                    if (wasteMartk) MakeWasteMark(canvas);
-                    break;
-            }
+            foreach (var shape in shapeCollection)
+                shape.Draw(canvas);
         }
 
     }

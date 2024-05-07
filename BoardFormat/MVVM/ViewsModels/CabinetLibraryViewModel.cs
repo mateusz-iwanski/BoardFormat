@@ -12,11 +12,11 @@ namespace BoardFormat.MVVM.ViewsModels
 {
     public class CabinetLibraryViewModel : BaseViewModel
     {
-        public ObservableCollection<BoardFormat.MVVM.Models.Cabinet> CabinetCollection { get; set; }
+        public ObservableCollection<Cabinet> CabinetCollection { get; set; }
 
         public CabinetLibraryViewModel()
         {
-            CabinetCollection = new ObservableCollection<BoardFormat.MVVM.Models.Cabinet>();
+            CabinetCollection = new ObservableCollection<Cabinet>();
 
             CabinetPieceBehavior cabinetPieceCollection = new CabinetPieceBehavior(
                 piece: new CabinetPiece(

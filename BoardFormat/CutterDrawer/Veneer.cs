@@ -58,7 +58,6 @@ namespace BoardFormat.CutterDrawer
 
         public override void Draw(ICanvas canvas)
         {
-            //Format.FormatCanvas(canvas);
             SetFormat(canvas);
 
             if (Piece.TopVeneer)
