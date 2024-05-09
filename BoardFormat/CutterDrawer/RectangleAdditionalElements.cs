@@ -10,7 +10,7 @@ namespace BoardFormat.CutterDrawer
     /// Represents additional elements that can be drawn on a rectangle. 
     /// It contains properties and methods for configuring and drawing 
     /// various elements such as veneer, waste marks, dimension text, 
-    /// centered text, and structure lines.
+    /// centered text, structure lines, etc.
     /// It's use in the RectangleDrawer class.
     /// </summary>
     public class RectangleAdditionalElements
@@ -18,12 +18,6 @@ namespace BoardFormat.CutterDrawer
         private List<ShapeDrawer> shapeCollection { get; set; } = new List<ShapeDrawer>();
 
         public RectangleAdditionalElements() { return; }
-
-        // Check minimum length and width for pice size.
-        // If not has required size, return false.
-        // widthRange and Length are in cm.
-        public bool RequiredPieceSize(PieceToDraw piece) =>
-            (piece.Width > 10 && piece.Length > 10) ? true : false;
 
         public void Add(ShapeDrawer shape) => shapeCollection.Add(shape);
 

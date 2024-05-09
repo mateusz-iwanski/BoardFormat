@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,8 @@ namespace BoardFormat.CutterDrawer
 {
     public class Rectangle : ShapeDrawer
     {
-        PieceToDraw Piece { get; set; }
+        // pure piece, without scalling or any other transformation
+        public PieceToDraw Piece { get; private set; }
         public ShapeFormat BoardFormat { get; set; }
         public ShapeFormat PieceFormat { get; set; }
 
@@ -35,6 +37,22 @@ namespace BoardFormat.CutterDrawer
             Piece = piece;
         }
 
+        /// <summary>
+        /// Check if point is in rectangle
+        /// </summary>
+        /// <param name="x">Axis X</param>
+        /// <param name="y">Axis Y</param>
+        /// <returns></returns>
+        public bool CheckDrawerPosition(float x, float y) 
+        {            
+            if (x >= StartX && x <= StartX + Width && y >= StartY && y <= StartY + Height)
+            {
+                Trace.WriteLine($"Type {Piece.Type} identifier {Piece.Identifier}");
+                return true;
+            }
+            return false;
+        }
+
         public override void Draw(ICanvas canvas)
         {
             if (Piece.Type == DrawerType.Waste)
@@ -49,11 +67,10 @@ namespace BoardFormat.CutterDrawer
             // add additional elements
             var additionalElements = new RectangleAdditionalElements();
 
-            if (additionalElements.RequiredPieceSize(Piece))
-                additionalElements.Add(new DimensionText(shape: this, piece: Piece));
-            if (Piece.BoardHasStructure)
-                additionalElements.Add(new Structure(shape: this, piece: Piece));
-
+            additionalElements.Add(new DimensionText(shape: this, piece: Piece, 
+                requiredDrawDimension: new RequiredDrawDimension() { Length=10, Width=10 })
+                );
+            additionalElements.Add(new Structure(shape: this, piece: Piece));
             additionalElements.Add(new Veneer(shape: this ,piece: Piece));
             additionalElements.Add(new WasteMark(shape: this, piece: Piece));
             additionalElements.Add(new CenteredText(shape: this, piece: Piece));

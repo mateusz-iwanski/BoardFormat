@@ -17,11 +17,8 @@ namespace BoardFormat.MVVM.Views;
 public partial class CutterDrawerView : ContentView
 {
     private CutterReader.CutterReader cutterReader;
+    private List<DrawableShapeObjects> BoardWithPiecesObjects;
     private List<List<PieceToDraw>> PieceToDrawListCollections;
-    private GraphicsView graphicsView;
-
-    List<BoardObjects> BoardWithPiecesObjects;
-
     private float leftRightMargin = 10.0f;
     private float topMargin = 10.0f;
     private float betweenBoardMargin = 10.0f;
@@ -95,25 +92,29 @@ public partial class CutterDrawerView : ContentView
         InitializeComponent();
         BindingContext = this;
 
-        BoardWithPiecesObjects = new List<BoardObjects>();
+        BoardWithPiecesObjects = new List<DrawableShapeObjects>();
 
         PieceToDrawListCollections = new List<List<PieceToDraw>>();
 
+
+        trzeba zrobiæ deepclone dla BoardWithPiecesObjects i przesy³aæ do graphicsviewcreator
+        podczas wykonywania GraphicsViewCreator dziala referencja do obiektu
+
         GraphicsVerticalStackLayout.SizeChanged += (s, e) =>
             new GraphicsViewCreator(
-                boardObjects: BoardWithPiecesObjects,
+                shapeObjects: BoardWithPiecesObjects,
                 graphicsLayout: GraphicsVerticalStackLayout
                 ).Draw(
                     scaleToWidth: (float)GraphicsVerticalStackLayout.Width,
                     leftRightMargin: LeftRightMargin,
-                    topMargin: BetweenBoardMargin
+                    topMargin: BetweenBoardMargin,
+                    graphicsViewSetup: new RectangleGraphicsViewSetup()
                     );
     }
-    
 
     /// <summary>
     /// Create list of Shapes to draw. 
-    /// List<BoardObjects> board with pieceCollection drawable for GraphicsView.
+    /// List<DrawableShapeObjects> board with pieceCollection drawable for GraphicsView.
     /// It's a first function you have to use before create graphics.
     /// </summary>
     public void Draw()
@@ -126,10 +127,10 @@ public partial class CutterDrawerView : ContentView
         PieceToDrawListCollections.Clear();
         BoardWithPiecesObjects.Clear();
 
-        // Add board and pices to list for draw        
+        // Add board and pieces to list for draw        
         OptimizeDataOutput.cuttings.ForEach(cutting =>
         {
-            List<PieceToDraw> PieceToDrawList = new List<PieceToDraw>();
+            List<IPieceToDraw> PieceToDrawList = new List<IPieceToDraw>();
             // read data from input Stock for board
             var stockInputData = new CutterStockReader(cutterReader).
                 GetStock(cutting.stockItemId);
@@ -137,7 +138,7 @@ public partial class CutterDrawerView : ContentView
             // build shape board to draw
             PieceToDrawList.Add(new BoardPieceToDraw(stockInputData).Board);
 
-            // buid shape pices for board to draw
+            // buid shape pieces for board to draw
             cutting.pieces.ForEach(piece =>
             {
                 var pieceInputData = new CutterPieceReader(cutterReader).
@@ -147,38 +148,45 @@ public partial class CutterDrawerView : ContentView
                     pieceInputData: pieceInputData,
                     piece: piece,
                     stock: stockInputData
-                    ).Form );
+                    ).Form);
             });
 
-            // build shape rest/waste pices to list for draw
+            // build shape rest/waste pieces to list for draw
             cutting.rest.ForEach(rest =>
             {
                 PieceToDrawList.Add(new WastePiece(rest: rest, stock: stockInputData).Waste);
             });
 
             // Add board with pieceCollection to draw to collection
-            BoardWithPiecesObjects.Add(new BoardObjects()
-            {
-                BoardGraphicsView = new GraphicsView(),
-                BoardWithPieceCollection = PieceToDrawList
-            });
+            BoardWithPiecesObjects.Add(
+                new DrawableShapeObjects()
+                {
+                    GraphicsView = new GraphicsView(),
+                    ShapeWithPieceCollection = PieceToDrawList
+                }); ;
 
         });
 
         // Create GraphicsView and draw shapes
         //CreateGraphicsView(LeftRightMargin, TopMargin, BetweenBoardMargin);      
         new GraphicsViewCreator(
-                boardObjects: BoardWithPiecesObjects,
+                shapeObjects: BoardWithPiecesObjects,
                 graphicsLayout: GraphicsVerticalStackLayout
                 ).Draw(
                     scaleToWidth: (float)GraphicsVerticalStackLayout.Width,
                     leftRightMargin: LeftRightMargin,
-                    topMargin: BetweenBoardMargin
+                    topMargin: BetweenBoardMargin,
+                    graphicsViewSetup: new RectangleGraphicsViewSetup()
                     );
 
         // Clear Data to avoid duplicate drawing
         OptimizeDataInput = null;
         OptimizeDataOutput = null;
+
+        //PieceToDrawListCollections.Clear();
+        //BoardWithPiecesObjects.Clear();
+
+
     }
 
 }

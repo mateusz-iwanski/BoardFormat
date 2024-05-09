@@ -11,7 +11,7 @@ namespace BoardFormat.CutterDrawer
     /// </summary>
     public class CenteredText : TextDrawer
     {
-        PieceToDraw Piece { get; set; }
+        IPieceToDraw Piece { get; set; }
         public string Text { get; set; }
         public bool RotateText { get; set; }
 
@@ -32,7 +32,7 @@ namespace BoardFormat.CutterDrawer
         /// <param name="fontSize">The size of the font.</param>
         public CenteredText(
             ShapeDrawer shape,
-            PieceToDraw piece,
+            IPieceToDraw piece,
             bool rotateWhenLength = true,
             Color? fontColor = null, float? fontSize = null
             ) : base(

@@ -13,6 +13,7 @@ namespace BoardFormat.CutterDrawer
     public class DimensionText : TextDrawer
     {
         private PieceToDraw Piece { get; set; }
+        public RequiredDrawDimension RequiredDrawDimension { get; private set; }
         public string HeightText { get; set; }
         public string LengthText { get; set; }
         public int Margin { get; set; }
@@ -24,6 +25,7 @@ namespace BoardFormat.CutterDrawer
         public DimensionText(
             ShapeDrawer shape,
             PieceToDraw piece,
+            RequiredDrawDimension requiredDrawDimension,
             int? margin = null,
             Color? fontColor = null, float? fontSize = null
             ) : base(
@@ -33,8 +35,9 @@ namespace BoardFormat.CutterDrawer
                 )
         {
             Piece = piece;
-            HeightText = (((int)Piece.Width) * 10).ToString();
-            LengthText = (((int)Piece.Length) * 10).ToString();
+            RequiredDrawDimension = requiredDrawDimension;
+            HeightText = (((int)Piece.Width) * 10).ToString();  // change from cm to mm
+            LengthText = (((int)Piece.Length) * 10).ToString();  // change from cm to mm
             Margin = margin ?? TextMargin;
             Format.FontColor = fontColor ?? TextFontColor;
             Format.FontSize = fontSize ?? TextFontSize;
@@ -47,7 +50,7 @@ namespace BoardFormat.CutterDrawer
             Format.FormatCanvas(canvas);
 
             // Calculate the center of the rectangle
-            var centerX = StartX + Margin;// + widthRange / 2;
+            var centerX = StartX + Margin; 
             var centerY = StartY + Height / 2;
 
             // Rotate the canvas
@@ -70,17 +73,22 @@ namespace BoardFormat.CutterDrawer
 
         public override void Draw(ICanvas canvas)
         {
-            // make format for the text
-            Format.FormatCanvas(canvas);
+            if (Piece.Width > RequiredDrawDimension.Width
+                && Piece.Length > RequiredDrawDimension.Length
+                )
+            {
+                // make format for the text
+                Format.FormatCanvas(canvas);
 
-            // Save the current state of the canvas
-            canvas.SaveState();
+                // Save the current state of the canvas
+                canvas.SaveState();
 
-            DrawLength(canvas);
-            DrawWidth(canvas);
+                DrawLength(canvas);
+                DrawWidth(canvas);
 
-            // Restore the state of the canvas
-            canvas.RestoreState();
+                // Restore the state of the canvas
+                canvas.RestoreState();
+            }
         }
     }
 }

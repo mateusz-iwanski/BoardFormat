@@ -11,16 +11,17 @@ namespace BoardFormat.CutterDrawer
 {
     public class GraphicsViewCreator
     {
-        public List<BoardObjects> BoardObject { get; private set; }
-        private Layout GraphicsLayout;
+        public List<DrawableShapeObjects> ShapeObjects { get; private set; }
+        private Layout _graphicsLayout;
+        private IGraphicsViewSetup _graphicsViewSetup;
 
         public GraphicsViewCreator(
-            List<BoardObjects> boardObjects, 
+            List<DrawableShapeObjects> shapeObjects, 
             Layout graphicsLayout
             )
         {
-            BoardObject = boardObjects;
-            GraphicsLayout = graphicsLayout;
+            ShapeObjects = shapeObjects;
+            _graphicsLayout = graphicsLayout;
         }
 
         /// <summary>
@@ -35,25 +36,29 @@ namespace BoardFormat.CutterDrawer
         public void Draw(
             float scaleToWidth,
             float leftRightMargin,
-            float topMargin
+            float topMargin,
+            RectangleGraphicsViewSetup graphicsViewSetup
         )
         {
-            if (BoardObject.Count > 0)
-                if (BoardObject[0].BoardGraphicsView != null)
+            if (ShapeObjects.Count > 0)
+                if (ShapeObjects[0].GraphicsView != null)
                 {
-                    GraphicsLayout.Clear();
+                    _graphicsLayout.Clear();
                     // it's use to set layout height the same as shape height
                     float shapeHeight = 0;
 
-                    foreach (var element in BoardObject)
+                    foreach (var element in ShapeObjects)
                     {
 
                         // create board with pieceCollection drawable and add to layout
-                        if (element.BoardWithPieceCollection.Count > 0)
+                        if (element.ShapeWithPieceCollection.Count > 0)
                         {
-                            // make shapes (one board and pieceCollection inside) drawable                         
-                            var drawable = new CutterDrawer.ShapeDrawable(
-                                pieceToDrawCollection: element.BoardWithPieceCollection,
+                            RectangleBuilder shapeBuilder = new RectangleBuilder();
+
+                            // make shapes (piece and piece children) drawable                         
+                            var drawable = new ShapeDrawable(
+                                elementsToDrawCollection: element.ShapeWithPieceCollection,
+                                shapeBuilder: shapeBuilder,
                                 scaleToWidth: scaleToWidth,
                                 leftRightMargin: leftRightMargin,
                                 topMargin: topMargin
@@ -63,17 +68,29 @@ namespace BoardFormat.CutterDrawer
                             shapeHeight += drawable.ShapeHeight + topMargin;
 
                             // Set GraphicsView height as size height of Drawable shape
-                            element.BoardGraphicsView.HeightRequest = drawable.ShapeHeight;
+                            element.GraphicsView.HeightRequest = drawable.ShapeHeight;
                             // Set GraphicsView width as size of layout - 10px margin
-                            element.BoardGraphicsView.WidthRequest = (float)GraphicsLayout.Width - 10;
+                            element.GraphicsView.WidthRequest = (float)_graphicsLayout.Width - 10;
 
                             // Set the height of the layout to the height of the Drawable
-                            GraphicsLayout.HeightRequest = shapeHeight;
+                            _graphicsLayout.HeightRequest = shapeHeight;
+
+                            new RectangleGraphicsViewSetup().Setup(
+                                shapeBuilder: shapeBuilder,
+                                graphicsView: element.GraphicsView
+                                );
+
+                            //graphicsViewSetup.Setup(
+                            //    shapeBuilder: shapeBuilder,
+                            //    graphicsView: element.GraphicsView
+                            //    );
 
                             // Update the Drawable
-                            element.BoardGraphicsView.Drawable = drawable;
+                            element.GraphicsView.Drawable = drawable;
 
-                            GraphicsLayout.Children.Add(element.BoardGraphicsView);
+
+
+                            _graphicsLayout.Children.Add(element.GraphicsView);
                         }
                     }
                 }

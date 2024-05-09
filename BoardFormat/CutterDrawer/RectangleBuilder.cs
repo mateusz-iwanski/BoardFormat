@@ -12,13 +12,13 @@ namespace BoardFormat.CutterDrawer
     /// Look out! For Carpenter/Specialist length of cabinetPiece/board is width for graphics/layouts and
     /// width is height for graphics/layouts elements.
     /// </summary>
-    public class RectangleBuilder
+    public class RectangleBuilder : IShapeBuilder
     {
-        public List<Rectangle> RectangleShapes { get; private set; }
+        List<ShapeDrawer> _rectangleShapes { get; set; }
 
         public RectangleBuilder()
         {
-            RectangleShapes = new List<Rectangle>();
+            _rectangleShapes = new List<ShapeDrawer>();
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace BoardFormat.CutterDrawer
 
             // Look out! For carpenter length of cabinetPiece and board is width.
             // Board/cabinetPiece width is height for graphics/layouts elements.
-            RectangleShapes.Add(
+            _rectangleShapes.Add(
                 new Rectangle(
                     x: scaledX,
                     y: scaledY,
@@ -65,7 +65,7 @@ namespace BoardFormat.CutterDrawer
         /// <param name="pieceToDrawListCollection"></param>
         /// <param name="imageScaleByWidth"></param>
         public float Build(
-            List<PieceToDraw> pieceToDrawListCollection,
+            List<IPieceToDraw> elemetsToDrawListCollection,
             float imageScaleByWidth,
             float margin
             )
@@ -74,12 +74,11 @@ namespace BoardFormat.CutterDrawer
 
             float heightPointYPosition = 0;
 
-            pieceToDrawListCollection.ForEach(piece =>
+            elemetsToDrawListCollection.ForEach(piece =>
             {
                 // Setter for height of this board in loop
-
                 heightPointYPosition = Add(
-                    piece: piece,
+                    piece: (PieceToDraw)piece,
                     imageScale: imageScaleByWidth,
                     margin: margin
                 );
@@ -92,5 +91,9 @@ namespace BoardFormat.CutterDrawer
             return shapeHeight;
         }
 
+        public List<ShapeDrawer> GetShapes()
+        {
+            return _rectangleShapes;
+        }
     }       
 }

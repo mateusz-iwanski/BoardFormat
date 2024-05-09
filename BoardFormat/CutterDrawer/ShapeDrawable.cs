@@ -17,23 +17,24 @@ namespace BoardFormat.CutterDrawer
     /// </summary>
     public class ShapeDrawable : IDrawable
     {
-        private List<PieceToDraw> PieceToDrawListCollection;
+        private List<IPieceToDraw> ElementsToDrawListCollection;
 
-        private RectangleBuilder rectangleBuilder;
+        private IShapeBuilder _shapeBuilder;
         public List<ShapeDrawer> Shapes;
         public float ShapeHeight { get; private set; }
 
         public ShapeDrawable(
-            List<PieceToDraw> pieceToDrawCollection,
+            List<IPieceToDraw> elementsToDrawCollection,
+            IShapeBuilder shapeBuilder,
             float scaleToWidth,
             float leftRightMargin,
             float topMargin
             )
         {
-            PieceToDrawListCollection = pieceToDrawCollection;
-            rectangleBuilder = new RectangleBuilder();
+            ElementsToDrawListCollection = elementsToDrawCollection;
+            _shapeBuilder = shapeBuilder;
             Shapes = new List<ShapeDrawer>();
-            float maxSize = GetMaxFromPieceToDrawCollection(pieceToDrawCollection);
+            float maxSize = GetMaxFromELementsToDrawCollection(elementsToDrawCollection);
             ShapeHeight = maxSize;
             MakeShapes(
                 scaleToWidth,
@@ -47,7 +48,7 @@ namespace BoardFormat.CutterDrawer
         // Get the maximum length value from the list of boards with pieceCollection to draw.
         // The longest should be always length of one of the board
         // Every graphics view should by scale by the longest element 
-        public float GetMaxFromPieceToDrawCollection(List<PieceToDraw> listPiece) =>
+        public float GetMaxFromELementsToDrawCollection(List<IPieceToDraw> listPiece) =>
             listPiece.Max(piece => (float)piece.Y + (float)piece.Length);
 
         private float ScaleToGraphicsViewSize(
@@ -77,8 +78,8 @@ namespace BoardFormat.CutterDrawer
                 maxSize: maxSize
                 );
 
-            ShapeHeight = rectangleBuilder.Build(
-                                pieceToDrawListCollection: PieceToDrawListCollection,
+            ShapeHeight = _shapeBuilder.Build(
+                                elementsToDrawListCollection: ElementsToDrawListCollection,
                                 imageScaleByWidth: scale,
                                 margin: betweenBoardMargin
                             );
@@ -86,7 +87,7 @@ namespace BoardFormat.CutterDrawer
 
         public void Draw(ICanvas canvas, RectF dirtyRect)
         {            
-            foreach (var shape in rectangleBuilder.RectangleShapes)
+            foreach (var shape in _shapeBuilder.GetShapes())
                 shape.Draw(canvas);
         }
 

@@ -53,8 +53,16 @@ namespace BoardFormat.MVVM.ViewsModels
             dib.AddStockItem(materialId: materialId2, identifier: "material on stock", "description ...", length: 1000, width: 2000, quantity: 200, structure: true);
 
             dib.AddPiece(
-                materialId: materialId2, identifier: "cabinetPiece", description: "description ...",
-                length: 200, width: 500, quantity: 12, structure: true, leftVeneer: true, rightVeneer: true, topVeneer: false, bottomVeneer: false, bold: false);
+                materialId: materialId2, identifier: "c1", description: "description ...",
+                length: 200, width: 500, quantity: 1, structure: true, leftVeneer: true, rightVeneer: true, topVeneer: false, bottomVeneer: false, bold: false);
+
+            dib.AddPiece(
+                materialId: materialId2, identifier: "c2", description: "description ...",
+                length: 200, width: 500, quantity: 2, structure: true, leftVeneer: true, rightVeneer: true, topVeneer: false, bottomVeneer: false, bold: false);
+
+            dib.AddPiece(
+                materialId: materialId2, identifier: "c3", description: "description ...",
+                length: 200, width: 500, quantity: 5, structure: true, leftVeneer: true, rightVeneer: true, topVeneer: false, bottomVeneer: false, bold: false);
 
             dib.AddPiece(
                 materialId: materialId, identifier: "cabinetPiece", description: "description ...",

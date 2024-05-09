@@ -29,12 +29,6 @@ public partial class CabinetLibraryView : ContentPage
 				pieceCollectionViewModel.Pieces.Add(cabinetPieceBehavior.cabinetPiece.Piece);
 			});
 			
-   //     pieceCollectionViewModel.Pieces.Add(new Piece(
-   //             length: 1000.0f,
-   //             width: 500.0f,
-   //             structure: true
-			//	)
-			//);
 		Navigation.PopAsync();
     }
 }
