@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BoardFormat.FurnitureLibrary;
+using Microsoft.Maui.Controls;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -11,19 +13,28 @@ namespace BoardFormat.CutterDrawer
     {
         RectangleBuilder _shapeBuilder;
         GraphicsView _graphicsView;
+        Rectangle _rectangle;
+        bool _startInteraction;
 
-        public RectangleGraphicsViewSetup()
+        public RectangleGraphicsViewSetup(GraphicsView graphicsView)
         {
+            // we don't want to add to start and end interaction multiple times
+            _startInteraction = false;
+            _graphicsView = graphicsView;
             return;
         }
 
-        public void Setup(RectangleBuilder shapeBuilder, GraphicsView graphicsView)
+        public void Setup(RectangleBuilder shapeBuilder)
         {
             _shapeBuilder = shapeBuilder;
-            _graphicsView = graphicsView;
-            _graphicsView.StartInteraction += OnStartInteraction;
-            _graphicsView.EndInteraction += OnEndInteraction;
-            //return new GraphicsView();
+
+            // add to GraphicsView event handlers just once
+            if (!_startInteraction)
+            {                
+                _graphicsView.StartInteraction += OnStartInteraction;
+                _graphicsView.EndInteraction += OnEndInteraction;
+                _startInteraction = true;
+            }
         }
 
         void OnStartInteraction(object Sender, TouchEventArgs evt)
@@ -33,26 +44,22 @@ namespace BoardFormat.CutterDrawer
             var a = _shapeBuilder.GetShapes().Cast<Rectangle>().ToList();//.FirstOrDefault(
             foreach (var item in a)
             {
-                if (item.CheckDrawerPosition(p.X, p.Y))
+                if (item.Piece.Type != DrawerType.Board)
                 {
-                    Trace.WriteLine($"Piece found at X - {item.StartX} Y - {item.StartY} with identifier {item.Piece.Identifier} ");
+                    if (item.CheckDrawerPosition(p.X, p.Y))
+                    {
+                        Trace.WriteLine($"Point position X {p.X} Y {p.Y}");
+                        Trace.WriteLine($"StartX {item.StartX} StartX + Width {item.StartX + item.Width} StartY {item.StartY} StartY + Height {item.StartY + item.Height}");
+                        Trace.WriteLine($"Piece found at X - {item.StartX} Y - {item.StartY} with identifier {item.Piece.Identifier} ");
+                        _rectangle = item;
+                    }
                 }
             }
-
         }
 
         void OnEndInteraction(object Sender, TouchEventArgs evt)
         {
-            //PointF p = evt.Touches.FirstOrDefault();
-            //Trace.WriteLine($"Released/click at X - {p.X} Y- {p.Y}");
-            //var a = _shapeBuilder.GetShapes().Cast<Rectangle>().ToList();//.FirstOrDefault(
-            //foreach (var item in a)
-            //{
-            //    if (item.CheckDrawerPosition(p.X, p.Y))
-            //    {
-            //        Trace.WriteLine($"Piece found at X - {item.StartX} Y - {item.StartY} with identifier {item.Piece.Identifier} ");
-            //    }
-            //}
+            Trace.WriteLine("########### Released/click");
         }
 
 

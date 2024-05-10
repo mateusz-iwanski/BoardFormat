@@ -86,8 +86,10 @@ public partial class CutterDrawerView : ContentView
         set => SetValue(OptimizeDataOutputProperty, value);
     }
 
+    
 
-    public CutterDrawerView()
+
+    public CutterDrawerView()                
     {
         InitializeComponent();
         BindingContext = this;
@@ -97,18 +99,19 @@ public partial class CutterDrawerView : ContentView
         PieceToDrawListCollections = new List<List<PieceToDraw>>();
 
 
-        trzeba zrobiæ deepclone dla BoardWithPiecesObjects i przesy³aæ do graphicsviewcreator
-        podczas wykonywania GraphicsViewCreator dziala referencja do obiektu
+        //trzeba zrobiæ deepclone dla BoardWithPiecesObjects i przesy³aæ do graphicsviewcreator
+        //podczas wykonywania GraphicsViewCreator dziala referencja do obiektu
 
-        GraphicsVerticalStackLayout.SizeChanged += (s, e) =>
+        //RectangleGraphicsViewSetup a = new RectangleGraphicsViewSetup();
+
+        GraphicsVerticalStackLayout.SizeChanged += (s, e) => 
             new GraphicsViewCreator(
                 shapeObjects: BoardWithPiecesObjects,
                 graphicsLayout: GraphicsVerticalStackLayout
                 ).Draw(
                     scaleToWidth: (float)GraphicsVerticalStackLayout.Width,
                     leftRightMargin: LeftRightMargin,
-                    topMargin: BetweenBoardMargin,
-                    graphicsViewSetup: new RectangleGraphicsViewSetup()
+                    topMargin: BetweenBoardMargin
                     );
     }
 
@@ -158,11 +161,13 @@ public partial class CutterDrawerView : ContentView
             });
 
             // Add board with pieceCollection to draw to collection
+            var graphicsView = new GraphicsView();
             BoardWithPiecesObjects.Add(
                 new DrawableShapeObjects()
                 {
-                    GraphicsView = new GraphicsView(),
-                    ShapeWithPieceCollection = PieceToDrawList
+                    GraphicsView = graphicsView,
+                    ShapeWithPieceCollection = PieceToDrawList,
+                    graphicsViewSetup = new RectangleGraphicsViewSetup(graphicsView)
                 }); ;
 
         });
@@ -175,8 +180,7 @@ public partial class CutterDrawerView : ContentView
                 ).Draw(
                     scaleToWidth: (float)GraphicsVerticalStackLayout.Width,
                     leftRightMargin: LeftRightMargin,
-                    topMargin: BetweenBoardMargin,
-                    graphicsViewSetup: new RectangleGraphicsViewSetup()
+                    topMargin: BetweenBoardMargin
                     );
 
         // Clear Data to avoid duplicate drawing

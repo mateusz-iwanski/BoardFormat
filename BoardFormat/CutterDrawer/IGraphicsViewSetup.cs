@@ -8,6 +8,6 @@ namespace BoardFormat.CutterDrawer
 {
     public interface IGraphicsViewSetup
     {
-        public void Setup(RectangleBuilder shapeBuilder, GraphicsView graphicsView);
+        public void Setup(RectangleBuilder shapeBuilder);
     }
 }

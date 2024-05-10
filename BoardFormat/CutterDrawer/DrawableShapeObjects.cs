@@ -13,5 +13,6 @@ namespace BoardFormat.CutterDrawer
     {
         public GraphicsView GraphicsView;
         public List<IPieceToDraw> ShapeWithPieceCollection;
+        public IGraphicsViewSetup graphicsViewSetup;
     }
 }

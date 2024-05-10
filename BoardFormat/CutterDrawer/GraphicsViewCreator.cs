@@ -36,8 +36,7 @@ namespace BoardFormat.CutterDrawer
         public void Draw(
             float scaleToWidth,
             float leftRightMargin,
-            float topMargin,
-            RectangleGraphicsViewSetup graphicsViewSetup
+            float topMargin
         )
         {
             if (ShapeObjects.Count > 0)
@@ -75,22 +74,13 @@ namespace BoardFormat.CutterDrawer
                             // Set the height of the layout to the height of the Drawable
                             _graphicsLayout.HeightRequest = shapeHeight;
 
-                            new RectangleGraphicsViewSetup().Setup(
-                                shapeBuilder: shapeBuilder,
-                                graphicsView: element.GraphicsView
-                                );
-
-                            //graphicsViewSetup.Setup(
-                            //    shapeBuilder: shapeBuilder,
-                            //    graphicsView: element.GraphicsView
-                            //    );
-
                             // Update the Drawable
                             element.GraphicsView.Drawable = drawable;
 
-
-
                             _graphicsLayout.Children.Add(element.GraphicsView);
+
+                            // Set up the GraphicsView
+                            element.graphicsViewSetup.Setup(shapeBuilder);
                         }
                     }
                 }

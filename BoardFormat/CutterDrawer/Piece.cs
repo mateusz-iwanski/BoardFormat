@@ -8,6 +8,7 @@ namespace BoardFormat.CutterDrawer
 {
     public struct PieceToDraw : IPieceToDraw
     {
+        public Guid Id { get; set; }
         public double Length { get; set; }
         public double Width { get; set; }
         public double X { get; set; }
@@ -21,6 +22,11 @@ namespace BoardFormat.CutterDrawer
         public bool TopVeneer { get; set; }
         public bool BottomVeneer { get; set; }
         public bool BoardHasStructure { get; set; }
+
+        public PieceToDraw()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 
 }
