@@ -98,12 +98,6 @@ public partial class CutterDrawerView : ContentView
 
         PieceToDrawListCollections = new List<List<PieceToDraw>>();
 
-
-        //trzeba zrobiæ deepclone dla BoardWithPiecesObjects i przesy³aæ do graphicsviewcreator
-        //podczas wykonywania GraphicsViewCreator dziala referencja do obiektu
-
-        //RectangleGraphicsViewSetup a = new RectangleGraphicsViewSetup();
-
         GraphicsVerticalStackLayout.SizeChanged += (s, e) => 
             new GraphicsViewCreator(
                 shapeObjects: BoardWithPiecesObjects,
@@ -161,19 +155,28 @@ public partial class CutterDrawerView : ContentView
             });
 
             // Add board with pieceCollection to draw to collection
+            
             var graphicsView = new GraphicsView();
+            var graphicsViewSetup = new RectangleGraphicsViewSetup(graphicsView);
+            graphicsViewSetup.RectangleSelected += (s, e) =>
+            {
+                Debug.WriteLine("Rectangle selected");
+                Debug.WriteLine("Rectangle selected " 
+                    + e.Rectangle.Piece.Identifier 
+                    + " -- " + e.Rectangle.Piece.Id);
+            };
+
             BoardWithPiecesObjects.Add(
                 new DrawableShapeObjects()
                 {
                     GraphicsView = graphicsView,
                     ShapeWithPieceCollection = PieceToDrawList,
-                    graphicsViewSetup = new RectangleGraphicsViewSetup(graphicsView)
+                    graphicsViewSetup = graphicsViewSetup
                 }); ;
 
         });
 
         // Create GraphicsView and draw shapes
-        //CreateGraphicsView(LeftRightMargin, TopMargin, BetweenBoardMargin);      
         new GraphicsViewCreator(
                 shapeObjects: BoardWithPiecesObjects,
                 graphicsLayout: GraphicsVerticalStackLayout
@@ -186,11 +189,6 @@ public partial class CutterDrawerView : ContentView
         // Clear Data to avoid duplicate drawing
         OptimizeDataInput = null;
         OptimizeDataOutput = null;
-
-        //PieceToDrawListCollections.Clear();
-        //BoardWithPiecesObjects.Clear();
-
-
     }
 
 }

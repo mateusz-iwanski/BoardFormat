@@ -13,8 +13,10 @@ namespace BoardFormat.CutterDrawer
     {
         RectangleBuilder _shapeBuilder;
         GraphicsView _graphicsView;
-        Rectangle _rectangle;
+        Rectangle _rectangle;        
         bool _startInteraction;
+
+        public event EventHandler<RectangleGraphicsViewSetupEventArgs> RectangleSelected;
 
         public RectangleGraphicsViewSetup(GraphicsView graphicsView)
         {
@@ -52,6 +54,7 @@ namespace BoardFormat.CutterDrawer
                         Trace.WriteLine($"StartX {item.StartX} StartX + Width {item.StartX + item.Width} StartY {item.StartY} StartY + Height {item.StartY + item.Height}");
                         Trace.WriteLine($"Piece found at X - {item.StartX} Y - {item.StartY} with identifier {item.Piece.Identifier} ");
                         _rectangle = item;
+                        RectangleSelected?.Invoke(this, new RectangleGraphicsViewSetupEventArgs(_rectangle));
                     }
                 }
             }
@@ -61,6 +64,7 @@ namespace BoardFormat.CutterDrawer
         {
             Trace.WriteLine("########### Released/click");
         }
+
 
 
     }

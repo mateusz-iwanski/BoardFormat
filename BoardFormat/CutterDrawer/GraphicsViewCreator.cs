@@ -13,7 +13,6 @@ namespace BoardFormat.CutterDrawer
     {
         public List<DrawableShapeObjects> ShapeObjects { get; private set; }
         private Layout _graphicsLayout;
-        private IGraphicsViewSetup _graphicsViewSetup;
 
         public GraphicsViewCreator(
             List<DrawableShapeObjects> shapeObjects, 
