@@ -6,6 +6,10 @@ namespace BoardFormat
     {
         public App()
         {
+
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NBaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXpfc3RWQ2ZZUUJwXkU=");            
+
+
             InitializeComponent();
 
             //MainPage = new AMain();

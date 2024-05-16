@@ -1,37 +1,52 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfgrid="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              x:Class="BoardFormat.MVVM.Views.CabinetLibraryView"
              Title="FurnitureLibraryView"
              x:Name="view" >
     <VerticalStackLayout>
         <Label Text="Furniture Library" FontSize="Large" HorizontalOptions="CenterAndExpand" />
-        <ListView ItemsSource="{Binding CabinetCollection}">
-            <ListView.ItemTemplate>
+
+        <sfgrid:SfDataGrid x:Name="dataGrid" ItemsSource="{Binding CabinetCollection}">
+
+            <sfgrid:SfDataGrid.Columns>
+                <sfgrid:DataGridTextColumn  HeaderText="Symbol" Format="0"
+                                            MappingName="Symbol" Width="150"/>
+                <sfgrid:DataGridTextColumn  HeaderText="Name"
+                                            MappingName="Name"
+                                            Width="150" />
+            </sfgrid:SfDataGrid.Columns>
+
+        </sfgrid:SfDataGrid>
+
+
+        <Label Text="end" FontSize="Large" HorizontalOptions="CenterAndExpand" />
+
+        <syncfusion:SfListView x:Name="listView" 
+               ItemsSource="{Binding CabinetCollection}"
+               ItemSize="100" HorizontalOptions="FillAndExpand">
+            <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-
-                        <Grid Padding="20" ColumnSpacing="20" RowSpacing="20" HorizontalOptions="CenterAndExpand" >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0"
-                                Text="{Binding Symbol}"
-                                />
-                            <Label Grid.Row="1"
-                                Text="{Binding Name}"
-                                />
-                            <Button Text="Add" Grid.Row="2" Clicked="OnButtonClicked"/>
-                        </Grid>
-                    </ViewCell>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image HeightRequest="50" WidthRequest="50" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Aspect="AspectFit">
+                            <Image.Source>
+                                <UriImageSource Uri="{Binding UriImageSource}" CacheValidity="1" CachingEnabled="true"/>
+                            </Image.Source>
+                        </Image>
+                        <Label Grid.Row="1" Text="{Binding Name}" TextColor="Teal" FontSize="15"/>
+                        <Button Text="Add" Grid.Row="2" Clicked="OnButtonClicked"/>
+                    </Grid>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
 
-        </ListView>
+        <!-- Add your columns here -->
     </VerticalStackLayout>
 </ContentPage>

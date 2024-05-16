@@ -15,7 +15,7 @@ namespace BoardFormat.MVVM.Models
     /// </summary>
     public class PieceLimits
     {
-        // min max range of piece or static size
+        // min max range of _piece or static size
         public MinMaxStatic<float> widthRange { get; private set; }
         public MinMaxStatic<float> lengthRange { get; private set; }
 

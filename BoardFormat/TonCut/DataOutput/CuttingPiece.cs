@@ -8,31 +8,31 @@ using System.Threading.Tasks;
 namespace TonCut
 {
     /// <summary>
-    /// Represents a piece with its position and orientation.
+    /// Represents a _piece with its position and orientation.
     /// </summary>
     public class CuttingPiece
     {/// <summary>
-     /// ID of the piece.
+     /// ID of the _piece.
      /// </summary>
         public int pieceId { get; set; }
 
         /// <summary>
-        /// x position of the piece.
+        /// x position of the _piece.
         /// </summary>
         public double x { get; set; }
 
         /// <summary>
-        /// y position of the piece.
+        /// y position of the _piece.
         /// </summary>
         public double y { get; set; }
 
         /// <summary>
-        /// Specifies if the piece was rotated.
+        /// Specifies if the _piece was rotated.
         /// </summary>
         public bool rotated { get; set; }
 
         /// <summary>
-        /// Specifies if the piece was reversed (back to front). 
+        /// Specifies if the _piece was reversed (back to front). 
         /// Temporarily 1D only.
         /// </summary>
         public bool mirrored { get; set; }
@@ -40,11 +40,11 @@ namespace TonCut
         /// <summary>
         /// Constructor for the Piece class.
         /// </summary>
-        /// <param name="pieceId">ID of the piece.</param>
-        /// <param name="x">x position of the piece.</param>
-        /// <param name="y">y position of the piece.</param>
-        /// <param name="rotated">Specifies if the piece was rotated.</param>
-        /// <param name="mirrored">Specifies if the piece was reversed (back to front).</param>
+        /// <param name="pieceId">ID of the _piece.</param>
+        /// <param name="x">x position of the _piece.</param>
+        /// <param name="y">y position of the _piece.</param>
+        /// <param name="rotated">Specifies if the _piece was rotated.</param>
+        /// <param name="mirrored">Specifies if the _piece was reversed (back to front).</param>
         public CuttingPiece(int pieceId, double x, double y, bool rotated, bool mirrored)
         {
             this.pieceId = pieceId;

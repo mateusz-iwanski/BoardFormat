@@ -33,7 +33,7 @@ namespace TonCut
 
         /// <summary>
         /// No results found.
-        /// There may be many reasons for this, e.g., no stocks provided, stock material groups not matching piece material groups, too small stock items, etc.
+        /// There may be many reasons for this, e.g., no stocks provided, stock material groups not matching _piece material groups, too small stock items, etc.
         /// </summary>
         ecNoResultsFound,
 

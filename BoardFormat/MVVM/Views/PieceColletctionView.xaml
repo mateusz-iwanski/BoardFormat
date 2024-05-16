@@ -8,7 +8,12 @@
         <StackLayout>
 
             <ActivityIndicator  IsEnabled="True" IsRunning="True" IsVisible="True" />
-            
+
+            <Label
+                 Text="Manual Pieces"
+                 VerticalOptions="Center" 
+                 HorizontalOptions="Center" />
+
             <ListView ItemsSource="{Binding ItemsSource, Source={x:Reference view}}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

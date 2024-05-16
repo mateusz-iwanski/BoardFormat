@@ -8,7 +8,7 @@ namespace TonCut
 {
     /// <summary>
     /// Material object for defining material group.
-    /// Each piece or StockItem must belong to a material group.
+    /// Each _piece or StockItem must belong to a material group.
     /// Thanks to this, the program knows which pieces are to be placed on which stock items.
     /// </summary>
     public class Material : DataGroupInput, IDataGroupRoot
@@ -74,21 +74,21 @@ namespace TonCut
         public int surplus { get; }
 
         /// <summary>
-        /// This setting determines whether the surplus can be adjusted in the piece configuration. 
-        /// If set to false, any surplus specified by the piece will be disregarded and the one defined in material group will be used.
+        /// This setting determines whether the surplus can be adjusted in the _piece configuration. 
+        /// If set to false, any surplus specified by the _piece will be disregarded and the one defined in material group will be used.
         /// </summary>
         public bool surplusEditable { get; }
 
         /// <summary>
         /// This setting determines the default Margin for pieces, which is the amount by which each cut element will be reduced on all sides. 
-        /// For instance, if a piece is 300x200 and the Margin is set to 2, the optimizer will use 296x196. 
+        /// For instance, if a _piece is 300x200 and the Margin is set to 2, the optimizer will use 296x196. 
         /// In the case of 1D materials, this applies, of course, only to the length.
         /// </summary>
         public int margin { get; }
 
         /// <summary>
-        /// This setting determines whether the Margin can be adjusted in the piece configuration. 
-        /// If set to false, any Margin specified by the piece will be disregarded and the one defined in material group will be used.
+        /// This setting determines whether the Margin can be adjusted in the _piece configuration. 
+        /// If set to false, any Margin specified by the _piece will be disregarded and the one defined in material group will be used.
         /// </summary>
         public bool marginEditable { get; }
 
@@ -101,10 +101,10 @@ namespace TonCut
         /// Piece size used for cutting. (mandatory, 2D only)
         /// Allowed values
         ///     - net
-        ///         The size specified by length & width of the piece will be used.
+        ///         The size specified by length & width of the _piece will be used.
         ///         Note that surplus and Margin may be applied if they are specified.
         ///     - gross
-        ///         The size of the piece will be increased by the thickness of the veneers used.
+        ///         The size of the _piece will be increased by the thickness of the veneers used.
         /// </summary>
         [StringValueAssignable("net", "gross")]
         public string cuttingDimensions { get; }
@@ -156,9 +156,9 @@ namespace TonCut
         /// <param name="canRotate">Specifies whether the pieces of this material group can be rotated. (1D only?)</param>
         /// <param name="canMirror">Specifies whether the pieces of this material group can be reversed (back to front). (1D only)</param>
         /// <param name="surplus">This setting defines the default surplus for pieces, meaning the amount by which each cut element will be enlarged on all sides.</param>
-        /// <param name="surplusEditable">This setting determines whether the surplus can be adjusted in the piece configuration.</param>
+        /// <param name="surplusEditable">This setting determines whether the surplus can be adjusted in the _piece configuration.</param>
         /// <param name="margin">This setting determines the default Margin for pieces, which is the amount by which each cut element will be reduced on all sides.</param>
-        /// <param name="marginEditable">This setting determines whether the Margin can be adjusted in the piece configuration.</param>
+        /// <param name="marginEditable">This setting determines whether the Margin can be adjusted in the _piece configuration.</param>
         /// <param name="defaultEdging">Specifies default edging for new stock items.</param>
         /// <param name="cuttingDimensions">Piece size used for cutting. (mandatory, 2D only)</param>
         /// <param name="canBeVeneered">Specifies whether pieces of the material group can be veneered. (2D only)</param>

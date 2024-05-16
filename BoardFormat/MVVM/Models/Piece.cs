@@ -8,7 +8,19 @@ namespace BoardFormat.MVVM.Models
 {
     public class Piece : BaseMaterial
     {
-        public Piece(float length, float width, bool structure, string? identifier = null) 
-            : base(length, width, structure, identifier) {}
+        /// If piece is from cabinet
+        int? _cabinetID;
+        public int? CabinetID { get => _cabinetID; private set => _cabinetID = value; }
+
+        public Piece(
+            float length, float width, 
+            bool structure, 
+            string? identifier = null, 
+            int? cabinetID = null
+            ) 
+            : base(length, width, structure, identifier) 
+        {
+            this.CabinetID = cabinetID;
+        }
     }
 }

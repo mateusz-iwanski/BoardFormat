@@ -53,7 +53,7 @@ namespace BoardFormat.CutterDrawer
                         {
                             RectangleBuilder shapeBuilder = new RectangleBuilder();
 
-                            // make shapes (piece and piece children) drawable                         
+                            // make shapes (_piece and _piece children) drawable                         
                             var drawable = new ShapeDrawable(
                                 elementsToDrawCollection: element.ShapeWithPieceCollection,
                                 shapeBuilder: shapeBuilder,

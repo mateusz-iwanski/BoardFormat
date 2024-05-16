@@ -4,6 +4,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
 
+using Syncfusion.Maui.Core.Hosting;
+
+
 namespace BoardFormat
 {
     public static class MauiProgram
@@ -34,6 +37,9 @@ namespace BoardFormat
                     .GetManifestResourceStream("BoardFormat.MyResources.appsettings.json");
             var config = new ConfigurationBuilder().AddJsonStream(stream).Build();
             builder.Configuration.AddConfiguration(config);
+
+
+            builder.ConfigureSyncfusionCore();
 
             var app = builder.Build();
 

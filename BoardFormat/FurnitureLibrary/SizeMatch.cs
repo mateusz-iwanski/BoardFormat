@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BoardFormat.FurnitureLibrary
 {
     /// <summary>
-    /// This class is used to match width and length of piece when 
+    /// This class is used to match width and length of _piece when 
     /// cabinet changes dimension in 3d.
     /// Look on CabinetPieceBehavior class.
     /// </summary>

@@ -86,9 +86,6 @@ public partial class CutterDrawerView : ContentView
         set => SetValue(OptimizeDataOutputProperty, value);
     }
 
-    
-
-
     public CutterDrawerView()                
     {
         InitializeComponent();

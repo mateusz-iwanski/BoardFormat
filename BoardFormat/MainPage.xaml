@@ -4,18 +4,25 @@
              xmlns:controls="clr-namespace:BoardFormat.MVVM.Views"       
              xmlns:local="clr-namespace:BoardFormat"
              xmlns:mauiapp="clr-namespace:BoardFormat.MVVM.ViewsModels"             
-             x:Class="BoardFormat.MainPage">
+             x:Class="BoardFormat.MainPage"
+             >
 
     <ContentPage.Resources>
         <local:ObservableToListConverter x:Key="observableToListConverter" />
     </ContentPage.Resources>
 
-    
+
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-    
+
+            <!-- 
+                PieceLength from  PieceCollectionView is binding to Length 
+                from PieceCollectionViewModel. 
+                If PieceLength is changed, Length in PieceCollectionViewModel will be changed too.
+                Rest works the same way. 
+            -->
             <controls:PieceCollectionView 
                 x:Name="pieceCollection"
                 ItemsSource="{Binding Pieces}"
@@ -24,6 +31,13 @@
                 PiceStructure="{Binding Structure, Mode=TwoWay}"
                 />
 
+            <controls:PieceFromCabinetsView 
+                x:Name="cabinetPieceCollection"
+                ItemsSource="{Binding PieceFromCabinets}"
+            />
+
+
+            
             <Button Text="{ Binding Structure }" Command="{Binding OnAddPieceClicked}" />
             <Button Text="Optimize" Command="{Binding OnOptimizeClicked}" />
 

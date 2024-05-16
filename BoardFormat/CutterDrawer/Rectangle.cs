@@ -12,7 +12,7 @@ namespace BoardFormat.CutterDrawer
 {
     public class Rectangle : ShapeDrawer
     {
-        // pure piece, without scalling or any other transformation
+        // pure _piece, without scalling or any other transformation
         public PieceToDraw Piece { get; private set; }
         public ShapeFormat BoardFormat { get; set; }
         public ShapeFormat PieceFormat { get; set; }

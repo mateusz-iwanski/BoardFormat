@@ -22,9 +22,9 @@ namespace TonCut
                 canRotate: false,
                 canMirror: false,
                 surplus: 0,
-                surplusEditable: true,  // surplus set in piece 
+                surplusEditable: true,  // surplus set in _piece 
                 margin: 0,
-                marginEditable: true,  // Margin set in piece
+                marginEditable: true,  // Margin set in _piece
                 defaultEdging: 0,
                 cuttingDimensions: "net",
                 canBeVeneered:false,

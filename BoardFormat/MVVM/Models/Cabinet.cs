@@ -11,59 +11,67 @@ namespace BoardFormat.MVVM.Models
 
     public class Cabinet
     {
+        static int lastId = default;
+        int id;
+        // symbol has to be unique
         string symbol;
         string name;
         Image image;
+        string? uriImageSource;
         string? description;
 
-        public string Symbol { get => symbol; set => symbol = value; }
-        public string Name { get => name; set => name = value; }
-        public Image Image { get => image; set => image = value; }
-        public string? Description { get => description; set => description = value; }
+        // symbol has to be unique
+        public string Symbol { get => symbol; private set => symbol = value; }
+        public string Name { get => name; private set => name = value; }
+        public Image Image { get => image; private set => image = value; }
+        public string? UriImageSource { get => uriImageSource; private set => uriImageSource = value; }
+        public string? Description { get => description; private set => description = value; }
         public ICabinetSize<float> Size { get; set; } = new CabinetSize<float>();
+        public int ID { get => id; private set => id = value;}
 
         List<Accessories> accessories;        
         List<CabinetPieceBehavior> pieceCollection;
         CabinetCategory category;
         CabinetLimits behavior;
 
-        public List<Accessories> Accessories { get => accessories; set => accessories = value; }
-        public List<CabinetPieceBehavior> Pieces { get => pieceCollection; set => pieceCollection = value; }
-        public CabinetCategory Category { get => category; set => category = value; }
-        public CabinetLimits Behavior { get => behavior; set => behavior = value; }
+        public List<Accessories> Accessories { get => accessories; private set => accessories = value; }
+        public List<CabinetPieceBehavior> Pieces { get => pieceCollection; private set => pieceCollection = value; }
+        public CabinetCategory Category { get => category; private set => category = value; }
+        public CabinetLimits Behavior { get => behavior; private set => behavior = value; }
 
 
         /// <summary>
         /// For the first time we will set empty cabinet with specific behavior, type, etc. 
-        /// Size and piece collection will be set when cabinet will have change size from default size.
+        /// Size and _piece collection will be set when cabinet will have change size from default size.
+        /// Pieces add by CabinetBuilder, first cabinet instance should be done
         /// </summary>
         /// <param name="symbol"></param>
         /// <param name="name"></param>
         /// <param name="image"></param>
-        /// <param name="accessories"></param>
-        /// <param name="pieces"></param>
         /// <param name="category"></param>
         /// <param name="cabinetLimits"></param>
         /// <param name="description"></param>
         public Cabinet(
             string symbol, 
-            string name, 
-            Image image,             
-            List<Accessories> accessories,
-            List<CabinetPieceBehavior> pieces,
+            string name,             
             CabinetCategory category,
             CabinetLimits cabinetLimits,
-            string? description = null           
+            Image image,
+            string? description = null,            
+            string? uriImageSource = null
             )
         {
+            id = ++lastId;
             this.Symbol = symbol;
             this.Name = name;
             this.Image = image;
             this.Description = description;
-            this.Accessories = accessories;
-            this.Pieces = pieces;
             this.Category = category;
             this.Behavior = cabinetLimits;
+            this.UriImageSource = uriImageSource;            
+
+            Pieces = new List<CabinetPieceBehavior>();
+            Accessories = new List<Accessories>();
         }
     }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BoardFormat.MVVM.Views.CanbinetAddToList"
+             Title="CanbinetAddToList">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label 
+                Text="{Binding Cabinet.Symbol}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Entry 
+                x:Name="width"
+                ClearButtonVisibility="WhileEditing" 
+                >
+                <Entry.Placeholder>
+                    <MultiBinding StringFormat="Min {0} mm, Max {1} mm">
+                        <Binding Path="Cabinet.Behavior.widthRange.Min" />
+                        <Binding Path="Cabinet.Behavior.widthRange.Max" />
+                    </MultiBinding>
+                </Entry.Placeholder>
+            </Entry>
+
+            <Entry x:Name="height">
+                <Entry.Placeholder>
+                    <MultiBinding StringFormat="Min {0} mm, Max {1} mm">
+                        <Binding Path="Cabinet.Behavior.heightRange.Min" />
+                        <Binding Path="Cabinet.Behavior.heightRange.Max" />
+                    </MultiBinding>
+                </Entry.Placeholder>
+            </Entry>
+
+            <Entry x:Name="depth">
+                <Entry.Placeholder>
+                    <MultiBinding StringFormat="Min {0} mm, Max {1} mm">
+                        <Binding Path="Cabinet.Behavior.depthRange.Min" />
+                        <Binding Path="Cabinet.Behavior.depthRange.Max" />
+                    </MultiBinding>
+                </Entry.Placeholder>
+            </Entry>
+
+
+
+
+            <Button Text="Add" Clicked="OnAddClicked"></Button>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -13,9 +13,9 @@ namespace BoardFormat.FurnitureLibrary
     /// </summary>
     public class CabinetCategory
     {
-        public List<CabinetDestiny> CabinetDestiny { get; set; }
-        public List<CabinetType> CabinetType { get; set; }
-        public CabinetCategory(List<CabinetDestiny> destiny, List<CabinetType> cabinetType)
+        public CabinetDestiny CabinetDestiny { get; set; }
+        public CabinetType CabinetType { get; set; }
+        public CabinetCategory(CabinetDestiny destiny, CabinetType cabinetType)
         {
             this.CabinetDestiny = destiny;
             this.CabinetType = cabinetType;

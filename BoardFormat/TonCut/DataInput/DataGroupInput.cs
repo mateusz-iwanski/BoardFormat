@@ -174,7 +174,7 @@ namespace TonCut
                     if (_piece.structure != "none,byLength,byWidth")
                         throw new ArgumentException($"Piece \"{_piece.identifier}\" has bad size {_piece.SizeReal().Length}x{_piece.SizeReal().Width}");
                     else
-                      // Check size for rotated piece
+                      // Check size for rotated _piece
                       if (stockWithMaterial.SizeReal().Length <= _piece.SizeReal().Width || stockWithMaterial.SizeReal().Width <= _piece.SizeReal().Length)
                         throw new ArgumentException($"Piece \"{_piece.identifier}\" has bad size {_piece.SizeReal().Length}x{_piece.SizeReal().Width}");
             }

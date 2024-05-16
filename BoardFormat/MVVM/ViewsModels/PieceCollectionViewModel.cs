@@ -10,23 +10,26 @@ using BoardFormat.MVVM.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using Microsoft.Maui.Controls; // Add this line
+
 using BoardFormat.CutterBuilder;
 using TonCut;
 
 namespace BoardFormat.MVVM.ViewsModels
 {
-    
+
     public class PieceCollectionViewModel : BaseViewModel
     {
         private DataInput dataInput;
         private DataOutputs dataOutput;
 
         public ObservableCollection<BoardFormat.MVVM.Models.Piece> Pieces { get; set; }
+        public ObservableCollection<BoardFormat.MVVM.Models.PieceFromCabinets> PieceFromCabinets { get; set; }
         public float Length { get; set; }
         public float Width { get; set; }
         public bool Structure { get; set; }
-        
-        public DataInput DataInput { get => dataInput; set => SetProperty(ref dataInput, value);}
+
+        public DataInput DataInput { get => dataInput; set => SetProperty(ref dataInput, value); }
         public DataOutputs DataOutput { get => dataOutput; set => SetProperty(ref dataOutput, value); }
 
 
@@ -37,6 +40,7 @@ namespace BoardFormat.MVVM.ViewsModels
         public PieceCollectionViewModel()
         {
             Pieces = new ObservableCollection<BoardFormat.MVVM.Models.Piece>();
+            PieceFromCabinets = new ObservableCollection<BoardFormat.MVVM.Models.PieceFromCabinets>();
             //configuration = MauiProgram.Services.GetService<IConfiguration>();
         }
 
@@ -101,8 +105,6 @@ namespace BoardFormat.MVVM.ViewsModels
                 structure: this.Structure
                 )
             );
-
-           
         }
         private static async Task<int> AddJob(Configuration config, DataInput input)
         {
@@ -119,5 +121,5 @@ namespace BoardFormat.MVVM.ViewsModels
         }
     }
 
-    
+
 }

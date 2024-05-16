@@ -43,7 +43,7 @@ namespace TonCut
                 );
 
             Piece piece = PieceTemplate.PieceFurnitureMelamineBoard(
-                id: 1, materialId: 1, identifier: "9999", description: "Test piece",
+                id: 1, materialId: 1, identifier: "9999", description: "Test _piece",
                 length: 1000, width: 500, quantity: 1, structure: "byLength",
                 veneers: new Veneers(leftVeneerId: null, rightVeneerId: null, topVeneerId: null, bottomVeneerId: null));
                 
